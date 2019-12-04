@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--bar-->
+        <scene sceneID="9hE-oR-XIo">
+            <objects>
+                <viewController id="o4k-Tj-Vuo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fTG-9C-YDa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fa4-pO-cwC">
+                                <rect key="frame" x="16" y="44" width="343" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="Fa4-pO-cwC" secondAttribute="leading" id="4tC-1P-LDQ"/>
+                            <constraint firstItem="Fa4-pO-cwC" firstAttribute="bottom" secondItem="XDE-rq-lfA" secondAttribute="bottom" id="CB9-dO-iJ0"/>
+                            <constraint firstItem="Fa4-pO-cwC" firstAttribute="top" secondItem="XDE-rq-lfA" secondAttribute="top" id="XOG-5e-2cG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fa4-pO-cwC" secondAttribute="trailing" id="uX4-ZK-84I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XDE-rq-lfA"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="bar" id="v1d-iL-sNA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSm-ts-jQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-50.399999999999999" y="18.440779610194905"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8rb-5C-tkC">
+            <objects>
+                <navigationController id="hre-6o-tMF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P8L-AG-3Ow">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="o4k-Tj-Vuo" kind="relationship" relationship="rootViewController" id="5jr-Os-029"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gAk-uq-lbh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-884" y="18"/>
+        </scene>
+    </scenes>
+</document>
