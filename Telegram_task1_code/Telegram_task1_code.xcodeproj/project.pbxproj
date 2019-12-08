@@ -1,0 +1,345 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A46777B6239D0394005ACF5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777B5239D0394005ACF5C /* AppDelegate.swift */; };
+		A46777BF239D0394005ACF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A46777BE239D0394005ACF5C /* Assets.xcassets */; };
+		A46777C2239D0394005ACF5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A46777C0239D0394005ACF5C /* LaunchScreen.storyboard */; };
+		A46777CA239D03CA005ACF5C /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777C9239D03CA005ACF5C /* MainTabViewController.swift */; };
+		A46777CC239D04C3005ACF5C /* ModalPresentationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777CB239D04C3005ACF5C /* ModalPresentationVC.swift */; };
+		A46777CE239D04E1005ACF5C /* StackPresentationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777CD239D04E1005ACF5C /* StackPresentationVC.swift */; };
+		A46777D0239D1701005ACF5C /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777CF239D1701005ACF5C /* NextButton.swift */; };
+		A46777D2239D170E005ACF5C /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777D1239D170E005ACF5C /* BackButton.swift */; };
+		A46777D4239D1FD1005ACF5C /* ModalPresentationNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777D3239D1FD1005ACF5C /* ModalPresentationNextVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A46777B2239D0394005ACF5C /* Telegram_task1_code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Telegram_task1_code.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A46777B5239D0394005ACF5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A46777BE239D0394005ACF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A46777C1239D0394005ACF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A46777C3239D0394005ACF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A46777C9239D03CA005ACF5C /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		A46777CB239D04C3005ACF5C /* ModalPresentationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentationVC.swift; sourceTree = "<group>"; };
+		A46777CD239D04E1005ACF5C /* StackPresentationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPresentationVC.swift; sourceTree = "<group>"; };
+		A46777CF239D1701005ACF5C /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		A46777D1239D170E005ACF5C /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		A46777D3239D1FD1005ACF5C /* ModalPresentationNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentationNextVC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A46777AF239D0394005ACF5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A46777A9239D0393005ACF5C = {
+			isa = PBXGroup;
+			children = (
+				A46777B4239D0394005ACF5C /* Telegram_task1_code */,
+				A46777B3239D0394005ACF5C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A46777B3239D0394005ACF5C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A46777B2239D0394005ACF5C /* Telegram_task1_code.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A46777B4239D0394005ACF5C /* Telegram_task1_code */ = {
+			isa = PBXGroup;
+			children = (
+				A46777C9239D03CA005ACF5C /* MainTabViewController.swift */,
+				A46777CF239D1701005ACF5C /* NextButton.swift */,
+				A46777D1239D170E005ACF5C /* BackButton.swift */,
+				A46777CB239D04C3005ACF5C /* ModalPresentationVC.swift */,
+				A46777D3239D1FD1005ACF5C /* ModalPresentationNextVC.swift */,
+				A46777CD239D04E1005ACF5C /* StackPresentationVC.swift */,
+				A46777B5239D0394005ACF5C /* AppDelegate.swift */,
+				A46777BE239D0394005ACF5C /* Assets.xcassets */,
+				A46777C0239D0394005ACF5C /* LaunchScreen.storyboard */,
+				A46777C3239D0394005ACF5C /* Info.plist */,
+			);
+			path = Telegram_task1_code;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A46777B1239D0394005ACF5C /* Telegram_task1_code */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A46777C6239D0394005ACF5C /* Build configuration list for PBXNativeTarget "Telegram_task1_code" */;
+			buildPhases = (
+				A46777AE239D0394005ACF5C /* Sources */,
+				A46777AF239D0394005ACF5C /* Frameworks */,
+				A46777B0239D0394005ACF5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Telegram_task1_code;
+			productName = Telegram_task1_code;
+			productReference = A46777B2239D0394005ACF5C /* Telegram_task1_code.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A46777AA239D0393005ACF5C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = apalon;
+				TargetAttributes = {
+					A46777B1239D0394005ACF5C = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = A46777AD239D0393005ACF5C /* Build configuration list for PBXProject "Telegram_task1_code" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A46777A9239D0393005ACF5C;
+			productRefGroup = A46777B3239D0394005ACF5C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A46777B1239D0394005ACF5C /* Telegram_task1_code */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A46777B0239D0394005ACF5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A46777C2239D0394005ACF5C /* LaunchScreen.storyboard in Resources */,
+				A46777BF239D0394005ACF5C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A46777AE239D0394005ACF5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A46777D0239D1701005ACF5C /* NextButton.swift in Sources */,
+				A46777D4239D1FD1005ACF5C /* ModalPresentationNextVC.swift in Sources */,
+				A46777CA239D03CA005ACF5C /* MainTabViewController.swift in Sources */,
+				A46777B6239D0394005ACF5C /* AppDelegate.swift in Sources */,
+				A46777CC239D04C3005ACF5C /* ModalPresentationVC.swift in Sources */,
+				A46777CE239D04E1005ACF5C /* StackPresentationVC.swift in Sources */,
+				A46777D2239D170E005ACF5C /* BackButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A46777C0239D0394005ACF5C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A46777C1239D0394005ACF5C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A46777C4239D0394005ACF5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A46777C5239D0394005ACF5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A46777C7239D0394005ACF5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Telegram_task1_code/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "apalon.Telegram-task1-code";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A46777C8239D0394005ACF5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Telegram_task1_code/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "apalon.Telegram-task1-code";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A46777AD239D0393005ACF5C /* Build configuration list for PBXProject "Telegram_task1_code" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A46777C4239D0394005ACF5C /* Debug */,
+				A46777C5239D0394005ACF5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A46777C6239D0394005ACF5C /* Build configuration list for PBXNativeTarget "Telegram_task1_code" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A46777C7239D0394005ACF5C /* Debug */,
+				A46777C8239D0394005ACF5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A46777AA239D0393005ACF5C /* Project object */;
+}
