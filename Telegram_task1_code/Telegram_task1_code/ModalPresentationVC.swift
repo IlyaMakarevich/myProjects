@@ -30,6 +30,7 @@ class ModalPresentationVC: UIViewController {
 
     @objc func nextAction() {
     self.present(ModalPresentationNextVC(), animated: true, completion: nil)
+        nextButton.shake()
     }
 }
 

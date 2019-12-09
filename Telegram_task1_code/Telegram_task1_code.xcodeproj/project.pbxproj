@@ -16,6 +16,7 @@
 		A46777D0239D1701005ACF5C /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777CF239D1701005ACF5C /* NextButton.swift */; };
 		A46777D2239D170E005ACF5C /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777D1239D170E005ACF5C /* BackButton.swift */; };
 		A46777D4239D1FD1005ACF5C /* ModalPresentationNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46777D3239D1FD1005ACF5C /* ModalPresentationNextVC.swift */; };
+		A477DB12239E57560065B063 /* StackPresentationNextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477DB11239E57560065B063 /* StackPresentationNextVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A46777CF239D1701005ACF5C /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		A46777D1239D170E005ACF5C /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		A46777D3239D1FD1005ACF5C /* ModalPresentationNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentationNextVC.swift; sourceTree = "<group>"; };
+		A477DB11239E57560065B063 /* StackPresentationNextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackPresentationNextVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				A46777CB239D04C3005ACF5C /* ModalPresentationVC.swift */,
 				A46777D3239D1FD1005ACF5C /* ModalPresentationNextVC.swift */,
 				A46777CD239D04E1005ACF5C /* StackPresentationVC.swift */,
+				A477DB11239E57560065B063 /* StackPresentationNextVC.swift */,
 				A46777B5239D0394005ACF5C /* AppDelegate.swift */,
 				A46777BE239D0394005ACF5C /* Assets.xcassets */,
 				A46777C0239D0394005ACF5C /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			files = (
 				A46777D0239D1701005ACF5C /* NextButton.swift in Sources */,
 				A46777D4239D1FD1005ACF5C /* ModalPresentationNextVC.swift in Sources */,
+				A477DB12239E57560065B063 /* StackPresentationNextVC.swift in Sources */,
 				A46777CA239D03CA005ACF5C /* MainTabViewController.swift in Sources */,
 				A46777B6239D0394005ACF5C /* AppDelegate.swift in Sources */,
 				A46777CC239D04C3005ACF5C /* ModalPresentationVC.swift in Sources */,

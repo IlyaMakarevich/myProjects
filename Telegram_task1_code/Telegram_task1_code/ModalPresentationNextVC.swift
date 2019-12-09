@@ -9,22 +9,28 @@
 import UIKit
 
 class ModalPresentationNextVC: UIViewController {
+    
+    let backButton = BackButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupVC()
+        backButton.setTitle("Close", for: .normal)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func goBack() {
+        self.dismiss(animated: true, completion: nil)
+        
     }
-    */
+    
+    func setupVC() {
+        view.backgroundColor = .green
+        view.addSubview(backButton)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Modal Presentation VC"
+        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        backButton.anchorToCenter(view, width: 100.0)
+    }
+    
 
 }

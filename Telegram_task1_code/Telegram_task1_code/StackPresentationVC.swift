@@ -10,21 +10,29 @@ import UIKit
 
 class StackPresentationVC: UIViewController {
 
+    let nextButton = NextButton()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupVC()
+        nextButton.setTitle("Next", for: .normal)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupVC() {
+        view.backgroundColor = .darkGray
+        view.addSubview(nextButton)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Stack Presentation VC"
+        nextButton.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+        nextButton.anchorToCenter(view, width: 100.0)
     }
-    */
+    
+    @objc func nextAction() {
+        let stackPresentationNextVC = StackPresentationNextVC()
+        if let navigator = navigationController {
+              navigator.pushViewController(stackPresentationNextVC, animated: true)
+          }
+        nextButton.shake()
+     }
 
 }
