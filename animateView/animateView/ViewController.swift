@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         setupView()
     }
 
-
     private func setupView() {
         view.addSubview(redView)
     }
