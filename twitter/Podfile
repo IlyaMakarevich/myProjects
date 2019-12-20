@@ -1,0 +1,5 @@
+use_frameworks!
+target 'twitter' do
+    pod 'Firebase/Analytics'
+    pod 'TwitterKit'
+end
