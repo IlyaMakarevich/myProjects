@@ -16,7 +16,7 @@ class MainTabViewController: UITabBarController {
     }
     
     func setupTabBarController() {
-        view.backgroundColor = UIColor.systemBlue
+        view.backgroundColor = UIColor(red: 225/255, green: 232/255, blue: 237/255, alpha: 1.0)
         guard let homeImage = UIImage(named: "home") else {return}
         let userViewController = createNavController(vc: UserViewController(), title: "", image: homeImage)
         
