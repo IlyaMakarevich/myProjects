@@ -11,10 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     let myArray = ["Ilya", "Natallia", "Olivia"]
     let picker = UIPickerView()
+    let label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPicker()
+        setupLabel()
     }
     
     
@@ -24,6 +26,16 @@ class ViewController: UIViewController {
         self.picker.delegate = self
         self.picker.dataSource = self
         
+    }
+
+    func setupLabel() {
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.topAnchor.constraint(equalTo: view.topAnchor,constant: 100.0)]
+        )
+        label.text = "what you gonna select?"
     }
 }
 
@@ -44,7 +56,10 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print(myArray[row])
+        label.text = myArray[row]
     }
+
+
     
     
 }
