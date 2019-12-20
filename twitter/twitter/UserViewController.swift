@@ -40,12 +40,13 @@ class UserViewController: UIViewController {
         guard let postImage = UIImage(named: "pencil-2") else {return}
         floatinButton.setImage(postImage, for: .normal)
         floatinButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
+        let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             floatinButton.widthAnchor.constraint(equalToConstant: 50),
             floatinButton.heightAnchor.constraint(equalToConstant: 50),
             view.trailingAnchor.constraint(equalTo: floatinButton.trailingAnchor, constant: 30),
-            view.bottomAnchor.constraint(equalTo: floatinButton.bottomAnchor, constant: 80)])
+            guide.bottomAnchor.constraint(equalTo: floatinButton.bottomAnchor, constant: 30)])
         
         floatinButton.layer.cornerRadius = 25
         floatinButton.clipsToBounds = true
