@@ -10,19 +10,15 @@ import UIKit
 
 class UserViewController: UIViewController {
     
+    
+    
     let loginBarButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(loginUser))
     
     private let floatinButton: UIButton = {
-        let floatingButton = UIButton()
-        floatingButton.frame = CGRect(x: 285, y: 485, width: 70, height: 70)
-        floatingButton.setTitle("+", for: .normal)
-        floatingButton.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        floatingButton.clipsToBounds = true
-        floatingButton.layer.cornerRadius = 50
-        floatingButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        floatingButton.layer.borderWidth = 3.0
-        floatingButton.addTarget(self,action: #selector(newPost), for: .touchUpInside)
-        return floatingButton
+        let button = UIButton(type: .custom)
+        button.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        button.addTarget(self, action: #selector(newPost), for: .touchUpInside)
+        return button
     }()
 
 
@@ -30,13 +26,31 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVC()
+        setupFloatingButton()
     }
     
     func setupVC() {
         view.backgroundColor = UIColor(red: 225/255, green: 232/255, blue: 237/255, alpha: 1.0)
        navigationItem.title = "Home"
-       navigationItem.rightBarButtonItem  = loginBarButtonItem
+       navigationItem.rightBarButtonItem = loginBarButtonItem
+    }
+    
+    func setupFloatingButton() {
         view.addSubview(floatinButton)
+        guard let postImage = UIImage(named: "pencil-2") else {return}
+        floatinButton.setImage(postImage, for: .normal)
+        floatinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            floatinButton.widthAnchor.constraint(equalToConstant: 50),
+            floatinButton.heightAnchor.constraint(equalToConstant: 50),
+            view.trailingAnchor.constraint(equalTo: floatinButton.trailingAnchor, constant: 30),
+            view.bottomAnchor.constraint(equalTo: floatinButton.bottomAnchor, constant: 80)])
+        
+        floatinButton.layer.cornerRadius = 25
+        floatinButton.clipsToBounds = true
+        floatinButton.setNeedsLayout()
+        floatinButton.layoutIfNeeded()
     }
     
     @objc func loginUser() {
