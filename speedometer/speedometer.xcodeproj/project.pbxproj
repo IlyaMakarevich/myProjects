@@ -24,6 +24,7 @@
 		A45F72CA23AAB6B100D1CD3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A45F72CD23AAB6B100D1CD3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A45F72CF23AAB6B100D1CD3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A46F1B8D23AB73BE004B35FE /* Minsk-Brest-Vilnus-Minsk-1h15m.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Minsk-Brest-Vilnus-Minsk-1h15m.gpx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 		A45F72B523AAB6AD00D1CD3D = {
 			isa = PBXGroup;
 			children = (
+				A46F1B8D23AB73BE004B35FE /* Minsk-Brest-Vilnus-Minsk-1h15m.gpx */,
 				A45F72C023AAB6AD00D1CD3D /* speedometer */,
 				A45F72BF23AAB6AD00D1CD3D /* Products */,
 			);

@@ -18,3 +18,16 @@ func greaterThanNine(value: Int) -> Bool {
 
 let arrayNumbersGreaterThanNine = filterWithPredicateClosure(closure: greaterThanNine(value:), numbers: numbers)
 
+let birthday:(String) -> () = {name in
+    print("today is birthday of "+name)
+}
+
+birthday("asda")
+
+
+let carDescription:(String,String) -> () = {(color:String, horsePowers:String) -> () in
+    print("My car is \(color) color and has \(horsePowers) horsePowers")
+}
+
+let lexus = carDescription("grey","287")
+

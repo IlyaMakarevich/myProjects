@@ -75,7 +75,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             // Getting Speed
             // The instantaneous speed of the device, measured in meters per second.
             let speed = location.speed
-            print(speed)
+            print(speed,Longitude,latitude)
             if (speed > 0) {
                 speedLabel.text = (String(format: "%.0f km/h", speed)) } else {
                 speedLabel.text = "0 km/h"
