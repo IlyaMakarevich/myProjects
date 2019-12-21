@@ -106,7 +106,6 @@
 				A49E82D123ABFB01005FAE32 /* Frameworks */,
 				A49E82D223ABFB01005FAE32 /* Resources */,
 				60ED1391D46BC7EED3BB8A29 /* [CP] Embed Pods Frameworks */,
-				55889A4B8F6608440DB37959 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,23 +163,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		55889A4B8F6608440DB37959 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-twitter/Pods-twitter-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		60ED1391D46BC7EED3BB8A29 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

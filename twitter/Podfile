@@ -1,5 +1,4 @@
 use_frameworks!
 target 'twitter' do
-    pod 'Firebase/Analytics'
-    pod 'TwitterKit'
+    pod 'Alamofire'
 end
