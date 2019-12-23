@@ -2,7 +2,10 @@ use_frameworks!
 
 target 'AlamofireOAuth1_Example' do
   pod 'AlamofireOAuth1', :path => '../'
-  pod 'Alamofire'
 
+  target 'AlamofireOAuth1_Tests' do
+    inherit! :search_paths
+
+    
   end
-
+end

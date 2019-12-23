@@ -27,7 +27,7 @@
 			<string>org.cocoapods.demo.AlamofireOAuth1-Example.twitter</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitter2</string>
+				<string>alamofire-oauth1</string>
 			</array>
 		</dict>
 		<dict>
@@ -37,7 +37,7 @@
 			<string>org.cocoapods.demo.AlamofireOAuth1-Example.fanfou</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitter2</string>
+				<string>alamofire-oauth1</string>
 			</array>
 		</dict>
 	</array>

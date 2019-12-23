@@ -1,25 +1,20 @@
 PODS:
   - Alamofire (4.9.1)
-  - AlamofireOAuth1 (0.1.0):
-    - Alamofire
-    - KeychainAccess
-  - KeychainAccess (4.1.0)
+  - OAuthSwift (2.1.0)
 
 DEPENDENCIES:
   - Alamofire
-  - AlamofireOAuth1
+  - OAuthSwift
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - AlamofireOAuth1
-    - KeychainAccess
+    - OAuthSwift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AlamofireOAuth1: 52322a92dc74ff04b07cb0ef5d2cf7722fe8f17f
-  KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
+  OAuthSwift: ab1675598273e04355e0282459c328e65c9ddacd
 
-PODFILE CHECKSUM: c5cfc73f30699ec86abd29bbe9ecb0d6b9f085a8
+PODFILE CHECKSUM: 0af7d0d574cfcaf53829d0927913f51886bfcd51
 
 COCOAPODS: 1.8.4

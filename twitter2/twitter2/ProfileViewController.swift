@@ -7,21 +7,13 @@
 //
 
 import UIKit
-import Alamofire
-import AlamofireOAuth1
-import SafariServices
+import OAuthSwift
 
 
-class ProfileViewController: UIViewController{
-    
-   
-//    let oauthswift = OAuth1Swift(
-//        consumerKey:    Keys.twitterConsumerKey,
-//        consumerSecret: Keys.twitterSecretKey,
-//        requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-//        authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-//        accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
-//    )
+class ProfileViewController: UIViewController {
+
+    var oauthSwift: OAuth1Swift?
+    var handle: OAuthSwiftRequestHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,32 +21,31 @@ class ProfileViewController: UIViewController{
     
     @IBAction func signInTapped(_ sender: Any) {
         print("login button tapped")
-        
-        
-        
-        
-        
-        
-        
-        
-//        let handle = oauthswift.authorize(
-//            withCallbackURL: URL(string: "twitter2://")!) { result in
-//            switch result {
-//            case .success(let (credential, response, parameters)):
-//              print(credential.oauthToken)
-//              print(credential.oauthTokenSecret)
-//              print(response)
-//              // Do your request
-//            case .failure(let error):
-//              print(error.localizedDescription)
-//            }
-//        }
-        
+        testTwitter()
     }
-    
-    
-    
 
-    
-    
+    func testTwitter() {
+        oauthSwift = OAuth1Swift(
+            consumerKey:    Keys.twitterConsumerKey,
+            consumerSecret: Keys.twitterSecretKey,
+            requestTokenUrl: "https://api.twitter.com/oauth/request_token",
+            authorizeUrl:    "https://api.twitter.com/oauth/authorize",
+            accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
+        )
+        // authorize
+        handle = oauthSwift?.authorize(
+            withCallbackURL: URL(string: "twitter2://oauth-callback/twitter")!) { result in
+            switch result {
+            case .success(let (credential, response, parameters)):
+              print(credential.oauthToken)
+              print(credential.oauthTokenSecret)
+              print(parameters["user_id"])
+              // Do your request
+            case .failure(let error):
+              print(error.localizedDescription)
+            }
+        }
 }
+
+}
+
