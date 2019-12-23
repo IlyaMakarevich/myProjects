@@ -8,10 +8,11 @@
 
 import UIKit
 import Alamofire
+import AlamofireOAuth1
 import SafariServices
 
 
-class ProfileViewController: OAuthViewController {
+class ProfileViewController: UIViewController{
     
    
 //    let oauthswift = OAuth1Swift(
