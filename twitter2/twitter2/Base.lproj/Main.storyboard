@@ -50,7 +50,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="heA-wq-isS">
-                                <rect key="frame" x="8" y="425" width="398" height="51"/>
+                                <rect key="frame" x="8" y="386" width="398" height="129"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tvz-gT-1Hz">
                                         <rect key="frame" x="160.5" y="0.0" width="77" height="51"/>
@@ -58,6 +58,21 @@
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="signInTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="cCA-2Z-SDQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Cj-M7-zOc">
+                                        <rect key="frame" x="148" y="60" width="102" height="30"/>
+                                        <state key="normal" title="Get profile info"/>
+                                        <connections>
+                                            <action selector="getInfoTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="mkT-IK-IWq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2o-1f-CKv">
+                                        <rect key="frame" x="142" y="99" width="114" height="30"/>
+                                        <state key="normal" title="Get followers ids"/>
+                                        <connections>
+                                            <action selector="followersTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="ZkF-ZU-bUY"/>
+                                            <action selector="getInfoTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="CPs-Nd-kGz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -72,14 +87,17 @@
                         <viewLayoutGuide key="safeArea" id="WKh-0u-ftH"/>
                     </view>
                     <navigationItem key="navigationItem" id="YdZ-hi-kDn">
-                        <barButtonItem key="rightBarButtonItem" title="Profile" id="cWw-tB-GJ1">
+                        <barButtonItem key="rightBarButtonItem" title="Log out" id="cWw-tB-GJ1">
                             <connections>
                                 <action selector="profileTapped:" destination="SyG-1p-Nw5" id="4uI-XB-448"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="loginLabel" destination="tvz-gT-1Hz" id="6II-1K-wXx"/>
+                        <outlet property="folowersButton" destination="d2o-1f-CKv" id="wdn-vB-Ykp"/>
+                        <outlet property="infoButton" destination="8Cj-M7-zOc" id="KAQ-rO-hvm"/>
+                        <outlet property="loginButton" destination="tvz-gT-1Hz" id="6II-1K-wXx"/>
+                        <outlet property="profileButton" destination="cWw-tB-GJ1" id="B75-oE-RHb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHY-Vk-KjY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
