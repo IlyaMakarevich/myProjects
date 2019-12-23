@@ -1,5 +1,5 @@
 use_frameworks!
 target 'twitter2' do
     pod 'Alamofire'
-    pod 'AlamofireOAuth1', :path => '.'
+    pod 'AlamofireOAuth1'
 end
