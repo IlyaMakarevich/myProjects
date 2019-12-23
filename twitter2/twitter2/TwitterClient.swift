@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import OAuthSwift
 
 class TwitterClient: OAuthSwift {
     //OAuth = fetch request token + Redirect to Auth + Fetch access token + CallBackUrl
