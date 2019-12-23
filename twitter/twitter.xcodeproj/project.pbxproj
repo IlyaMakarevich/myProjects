@@ -14,6 +14,9 @@
 		A49E82E423ABFB06005FAE32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A49E82E223ABFB06005FAE32 /* LaunchScreen.storyboard */; };
 		A49E82EC23AC04B7005FAE32 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E82EB23AC04B7005FAE32 /* UserViewController.swift */; };
 		A49E82EE23AC0574005FAE32 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E82ED23AC0574005FAE32 /* ScrollViewController.swift */; };
+		A49E82F023AE7C01005FAE32 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E82EF23AE7C00005FAE32 /* Post.swift */; };
+		A49E82F423AF5B1F005FAE32 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E82F323AF5B1F005FAE32 /* Keys.swift */; };
+		A49E82F623AF5CAC005FAE32 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49E82F523AF5CAC005FAE32 /* APIManager.swift */; };
 		D3E400701DE1383016FFCDE4 /* Pods_twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 569AA52209D642ACEC8AA163 /* Pods_twitter.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +33,9 @@
 		A49E82E523ABFB06005FAE32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A49E82EB23AC04B7005FAE32 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		A49E82ED23AC0574005FAE32 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		A49E82EF23AE7C00005FAE32 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		A49E82F323AF5B1F005FAE32 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		A49E82F523AF5CAC005FAE32 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +56,13 @@
 				569AA52209D642ACEC8AA163 /* Pods_twitter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A40682E423AF93F2004C079C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A49E82CB23ABFB01005FAE32 = {
@@ -73,10 +86,14 @@
 		A49E82D623ABFB01005FAE32 /* twitter */ = {
 			isa = PBXGroup;
 			children = (
+				A40682E423AF93F2004C079C /* Models */,
 				A49E82D723ABFB01005FAE32 /* AppDelegate.swift */,
 				A49E82DB23ABFB01005FAE32 /* MainTabViewController.swift */,
 				A49E82EB23AC04B7005FAE32 /* UserViewController.swift */,
 				A49E82ED23AC0574005FAE32 /* ScrollViewController.swift */,
+				A49E82EF23AE7C00005FAE32 /* Post.swift */,
+				A49E82F323AF5B1F005FAE32 /* Keys.swift */,
+				A49E82F523AF5CAC005FAE32 /* APIManager.swift */,
 				A49E82DD23ABFB01005FAE32 /* Main.storyboard */,
 				A49E82E023ABFB06005FAE32 /* Assets.xcassets */,
 				A49E82E223ABFB06005FAE32 /* LaunchScreen.storyboard */,
@@ -210,9 +227,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A49E82EC23AC04B7005FAE32 /* UserViewController.swift in Sources */,
+				A49E82F423AF5B1F005FAE32 /* Keys.swift in Sources */,
 				A49E82DC23ABFB01005FAE32 /* MainTabViewController.swift in Sources */,
 				A49E82EE23AC0574005FAE32 /* ScrollViewController.swift in Sources */,
 				A49E82D823ABFB01005FAE32 /* AppDelegate.swift in Sources */,
+				A49E82F023AE7C01005FAE32 /* Post.swift in Sources */,
+				A49E82F623AF5CAC005FAE32 /* APIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,13 +308,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -342,12 +363,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

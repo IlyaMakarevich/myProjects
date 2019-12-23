@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "C66BEB72-D856-48A0-AC1A-E5906567E763"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8833EDD-BE7C-41F4-B340-EBE778B670B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TwitterApi/Controllers/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "doOAuthTwitter()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11F6BD0A-1629-4B25-B982-38878128015E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/OAuthSwift/Sources/OAuth1Swift.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "authorize(withCallbackURL:success:failure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "11F6BD0A-1629-4B25-B982-38878128015E - c70f0508eac28ae1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OAuthSwift.OAuth1Swift.authorize(withCallbackURL: Foundation.URL, success: (OAuthSwift.OAuthSwiftCredential, Swift.Optional&lt;OAuthSwift.OAuthSwiftResponse&gt;, Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; (), failure: Swift.Optional&lt;(OAuthSwift.OAuthSwiftError) -&gt; ()&gt;) -&gt; Swift.Optional&lt;OAuthSwift.OAuthSwiftRequestHandle&gt;"
+                  moduleName = "OAuthSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilyamakarevich/Swift%20iOS%20Practice/myProjects/Twitter-API-authentication-and-service-call-with-OAuthSwift-master/TwitterApi/Pods/OAuthSwift/Sources/OAuth1Swift.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "133">
+               </Location>
+               <Location
+                  uuid = "11F6BD0A-1629-4B25-B982-38878128015E - c0ca1a8088c2d0c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OAuthSwift.OAuthSwiftCredential, Swift.Optional&lt;OAuthSwift.OAuthSwiftResponse&gt;, Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; () in OAuthSwift.OAuth1Swift.authorize(withCallbackURL: Foundation.URL, success: (OAuthSwift.OAuthSwiftCredential, Swift.Optional&lt;OAuthSwift.OAuthSwiftResponse&gt;, Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; (), failure: Swift.Optional&lt;(OAuthSwift.OAuthSwiftError) -&gt; ()&gt;) -&gt; Swift.Optional&lt;OAuthSwift.OAuthSwiftRequestHandle&gt;"
+                  moduleName = "OAuthSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ilyamakarevich/Swift%20iOS%20Practice/myProjects/Twitter-API-authentication-and-service-call-with-OAuthSwift-master/TwitterApi/Pods/OAuthSwift/Sources/OAuth1Swift.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "358">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

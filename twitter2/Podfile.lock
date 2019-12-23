@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (4.9.1)
+  - OAuthSwift (2.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - OAuthSwift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - OAuthSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  OAuthSwift: ab1675598273e04355e0282459c328e65c9ddacd
+
+PODFILE CHECKSUM: 4ff2671378a3beb28f33b4293e9a0f759e4a65b5
+
+COCOAPODS: 1.8.4

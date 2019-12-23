@@ -1,0 +1,8 @@
+use_frameworks!
+
+target 'AlamofireOAuth1_Example' do
+  pod 'AlamofireOAuth1', :path => '../'
+  pod 'Alamofire'
+
+  end
+

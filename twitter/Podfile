@@ -1,4 +1,5 @@
 use_frameworks!
 target 'twitter' do
     pod 'Alamofire'
+    pod 'OAuthSwift'
 end
