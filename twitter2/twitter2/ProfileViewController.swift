@@ -20,13 +20,21 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginLabel.isEnabled = true
+        loginLabel.isEnabled = !checkAccessToken() ? true : false
+        if loginLabel.isEnabled == false {
+            loginLabel.titleLabel?.text = "you already logged in"
+        }
     }
     
     @IBAction func signInTapped(_ sender: Any) {
         print("login button tapped")
         testTwitter()
     }
+
+    @IBAction func profileTapped(_ sender: UIBarButtonItem) {
+        checkAccessToken()
+    }
+
 
     func testTwitter() {
         oauthSwift = OAuth1Swift(
@@ -38,20 +46,36 @@ class ProfileViewController: UIViewController {
         )
         // authorize
         handle = oauthSwift?.authorize(
-            withCallbackURL: URL(string: "twitter2://oauth-callback/twitter")!) { result in
+        withCallbackURL: URL(string: "twitter2://oauth-callback/twitter")!) { result in
             switch result {
             case .success(let (credential, response, parameters)):
-              print(credential.oauthToken)
-              print(credential.oauthTokenSecret)
-              print(parameters["user_id"])
-              print(response)
-              self.loginLabel.isEnabled = false
-              // Do your request
+                print(credential.oauthToken)
+                print(credential.oauthTokenSecret)
+                print(parameters["user_id"])
+                print(response)
+                self.loginLabel.isEnabled = false
+                self.saveAccessToken(data: credential)
+            // Do your request
             case .failure(let error):
-              print(error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
-}
+    }
+
+    func saveAccessToken(data: OAuthSwiftCredential ) {
+        UserDefaults.standard.set(data.oauthToken, forKey: "twitterAccessToken")
+    }
+
+    func checkAccessToken() -> Bool {
+        if let name = UserDefaults.standard.string(forKey: "twitterAccessToken") {
+            print(name)
+            return true
+        } else {
+            return false
+        }
+
+    }
+
 
 }
 
