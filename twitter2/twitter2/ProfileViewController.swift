@@ -12,11 +12,15 @@ import OAuthSwift
 
 class ProfileViewController: UIViewController {
 
+
+    @IBOutlet var loginLabel: UIButton!
+
     var oauthSwift: OAuth1Swift?
     var handle: OAuthSwiftRequestHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginLabel.isEnabled = true
     }
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -40,6 +44,8 @@ class ProfileViewController: UIViewController {
               print(credential.oauthToken)
               print(credential.oauthTokenSecret)
               print(parameters["user_id"])
+              print(response)
+              self.loginLabel.isEnabled = false
               // Do your request
             case .failure(let error):
               print(error.localizedDescription)
