@@ -60,11 +60,11 @@
                                             <action selector="signInTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="cCA-2Z-SDQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Cj-M7-zOc">
-                                        <rect key="frame" x="148" y="60" width="102" height="30"/>
-                                        <state key="normal" title="Get profile info"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="947-vb-oKP">
+                                        <rect key="frame" x="147.5" y="60" width="103" height="30"/>
+                                        <state key="normal" title="Get info button"/>
                                         <connections>
-                                            <action selector="getInfoTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="mkT-IK-IWq"/>
+                                            <action selector="getInfoTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="csH-YJ-P2J"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2o-1f-CKv">
@@ -72,17 +72,24 @@
                                         <state key="normal" title="Get followers ids"/>
                                         <connections>
                                             <action selector="followersTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="ZkF-ZU-bUY"/>
-                                            <action selector="getInfoTapped:" destination="SyG-1p-Nw5" eventType="touchUpInside" id="CPs-Nd-kGz"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="idLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJb-tc-haV">
+                                <rect key="frame" x="179.5" y="784.5" width="55.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="WKh-0u-ftH" firstAttribute="trailing" secondItem="heA-wq-isS" secondAttribute="trailing" constant="8" id="FPS-Hs-BfQ"/>
                             <constraint firstItem="heA-wq-isS" firstAttribute="leading" secondItem="WKh-0u-ftH" secondAttribute="leading" constant="8" id="LbI-FW-Edg"/>
+                            <constraint firstItem="yJb-tc-haV" firstAttribute="centerX" secondItem="WKh-0u-ftH" secondAttribute="centerX" id="QDV-3j-Zkw"/>
                             <constraint firstItem="heA-wq-isS" firstAttribute="centerY" secondItem="WKh-0u-ftH" secondAttribute="centerY" id="bRw-45-6gF"/>
+                            <constraint firstItem="WKh-0u-ftH" firstAttribute="bottom" secondItem="yJb-tc-haV" secondAttribute="bottom" constant="8" id="qL2-QQ-s1d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WKh-0u-ftH"/>
                     </view>
@@ -95,7 +102,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="folowersButton" destination="d2o-1f-CKv" id="wdn-vB-Ykp"/>
-                        <outlet property="infoButton" destination="8Cj-M7-zOc" id="KAQ-rO-hvm"/>
+                        <outlet property="getInfoButton" destination="947-vb-oKP" id="lp4-gW-G1L"/>
+                        <outlet property="idLabel" destination="yJb-tc-haV" id="tvt-QG-KSz"/>
                         <outlet property="loginButton" destination="tvz-gT-1Hz" id="6II-1K-wXx"/>
                         <outlet property="profileButton" destination="cWw-tB-GJ1" id="B75-oE-RHb"/>
                     </connections>
