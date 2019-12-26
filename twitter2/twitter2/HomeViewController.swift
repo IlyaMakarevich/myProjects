@@ -30,12 +30,14 @@ class HomeViewController: UIViewController {
     )
 
     var handle: OAuthSwiftRequestHandle?
-    var credentials: OAuthSwiftCredential?
+    var credentials = OAuthSwiftCredential(consumerKey: Keys.twitterConsumerKey, consumerSecret: Keys.twitterSecretKey)
     var user = User(name: "")
-    
+    let defaults = UserDefaults.standard
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadCredentialsFromUserData()
         updateLabels()
     }
 
@@ -94,11 +96,11 @@ class HomeViewController: UIViewController {
                 print(parameters["screen_name"])
                 print(credential.oauthToken)
                 print(credential.oauthTokenSecret)
-                self.credentials = credential
+                self.saveCredentialsToUserData(data: credential)
                 self.updateLabels()
                 self.idLabel.text = String(format:"Connected to : %@", parameters["screen_name"] as! CVarArg)
                 self.user.name = parameters["screen_name"] as! String
-                UserDefaults.standard.set(self.user.name, forKey: "screen_name")
+                self.defaults.set(self.user.name, forKey: "screen_name")
                 //let userDictionary = try response?.jsonObject(options: [])
                 
             case .failure(let error):
@@ -135,7 +137,7 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func getTimelineTapped(_ sender: Any) {
-        handle = oauthSwift.client.get("https://api.twitter.com/1.1/statuses/user_timeline.json", parameters: ["screen_name": ""]) { results in
+        handle = oauthSwift.client.get("https://api.twitter.com/1.1/statuses/user_timeline.json", parameters: ["screen_name": user.name]) { results in
             switch results {
             case .success(let response):
                 let jsonDict = try? response.jsonObject()
@@ -145,40 +147,46 @@ class HomeViewController: UIViewController {
             }
 
         }
-        
     }
     
     func updateLabels() {
+        
+        print("oauthToken = \(oauthSwift.client.credential.oauthToken)")
+        print("oauthTokenSecret = \(oauthSwift.client.credential.oauthTokenSecret)")
+        
         loginButton.isEnabled = !checkAccessToken() ? true : false
         profileButton.isEnabled = checkAccessToken() ? true : false
         getInfoButton.isEnabled = checkAccessToken() ? true : false
         folowersButton.isEnabled = checkAccessToken() ? true : false
         idLabel.isHidden = !checkAccessToken() ? true : false
-
-        if let user_name = UserDefaults.standard.string(forKey: "screen_name") {
-            user.name = user_name
-        }
+        idLabel.text = self.user.name
     }
  
     func saveCredentialsToUserData(data: OAuthSwiftCredential ) {
         credentials = data
-        UserDefaults.standard.set(data.oauthToken, forKey: "oauthToken")
-        UserDefaults.standard.set(data.oauthTokenSecret, forKey: "oauthTokenSecret")
+        oauthSwift.client.credential.oauthToken = data.oauthToken
+        oauthSwift.client.credential.oauthTokenSecret = data.oauthTokenSecret
+        defaults.set(data.oauthToken, forKey: "oauthToken")
+        defaults.set(data.oauthTokenSecret, forKey: "oauthTokenSecret")
     }
     
-    func loadCredentialsFromUserData(to: OAuthSwiftCredential) {
-        if let oauthToken = UserDefaults.standard.string(forKey: "oauthToken") {
-            credentials?.oauthToken = oauthToken
+    func loadCredentialsFromUserData() {
+        if let oauthToken = defaults.string(forKey: "oauthToken") {
+            print(defaults.string(forKey: "oauthToken"))
+            oauthSwift.client.credential.oauthToken = oauthToken
         }
-        if let oauthTokenSecret = UserDefaults.standard.string(forKey: "oauthTokenSecret") {
-            credentials?.oauthTokenSecret = oauthTokenSecret
+        if let oauthTokenSecret = defaults.string(forKey: "oauthTokenSecret") {
+            oauthSwift.client.credential.oauthTokenSecret = oauthTokenSecret
+            print(defaults.string(forKey: "oauthTokenSecret"))
+        }
+        
+        if let user_name = defaults.string(forKey: "screen_name") {
+            self.user.name = user_name
         }
     }
 
     func checkAccessToken() -> Bool {
-        if let _ = UserDefaults.standard.string(forKey: "oauthToken") {
-            print("oauthToken = \(credentials?.oauthToken)")
-            print("oauthTokenSecret = \(credentials?.oauthTokenSecret)")
+        if let _ = defaults.string(forKey: "oauthToken") {
             return true
         } else {
             return false
