@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C6988F23-389A-4B5C-8A91-4FDBBFD38D3C"
+            uuid = "8B0DE075-299C-4B6B-83F3-D4AB290D027D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "twitter2/FeedViewController.swift"
+            filePath = "twitter2/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "loadTimeline()"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "logoutTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
