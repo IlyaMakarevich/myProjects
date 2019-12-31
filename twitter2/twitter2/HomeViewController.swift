@@ -23,12 +23,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var getRelationsLabel: UIButton!
     var user = User(name: "")
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileButton.isEnabled = false
         APIManager.shared.retrieveCredentials()
+        updateLabels()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         updateLabels()
     }
     
@@ -46,20 +49,15 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
-        APIManager.shared.login(success: {
+        APIManager.shared.login {
             self.updateLabels()
-        }) { (error) in
-            print(error?.localizedDescription)
         }
-        
     }
     
     
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
-        APIManager.shared.logOut(success: {
+        APIManager.shared.logOut {
             self.updateLabels()
-        }) { (error) in
-            print(error?.localizedDescription)
         }
         APIManager.shared.retrieveCredentials()
     }
@@ -67,7 +65,9 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func getTimelineTapped(_ sender: Any) {
-        APIManager.shared.getTimeline()
+        APIManager.shared.getTimeline { (tweet) in
+            print(tweet)
+        }
     }
     
     func updateLabels() {

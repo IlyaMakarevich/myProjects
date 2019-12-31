@@ -11,6 +11,16 @@ import Alamofire
 import OAuthSwift
 import KeychainAccess
 
+struct TweetModel {
+    let created_at: String
+    let text: String
+    
+    init(json: [String: Any]) {
+        created_at = json["created_at"] as? String ?? ""
+        text = json["text"] as? String ?? ""
+    }
+}
+
 class APIManager: SessionManager{
     
     static var shared: APIManager = APIManager()
@@ -47,8 +57,9 @@ class APIManager: SessionManager{
    
     
     //Twitter api methods
-    func login(success: @escaping () -> (), failure: @escaping (Error?) -> ()) {
-        //oauthSwift.authorizeURLHandler = SafariURLHandler(viewController: self, oauthSwift: oauthSwift)
+
+    func login(completion: @escaping () -> ()) {
+        
         handle = oauthManager.authorize(
         withCallbackURL: URL(string: "twitter2://oauth-callback/twitter")!) { result in
             switch result {
@@ -57,10 +68,11 @@ class APIManager: SessionManager{
                 print(credential.oauthTokenSecret)
                 self.saveCredenitalsInKeychain(credential: credential)
                 self.defaults.set(parameters["screen_name"] as! String, forKey: "screen_name")
+                completion()
             case .failure(let error):
                 print(error.localizedDescription)
             }
-        }
+        }       
     }
     func verifyCredentials() {
         handle = oauthManager.client.get("https://api.twitter.com/1.1/account/verify_credentials.json") { results in
@@ -103,12 +115,15 @@ class APIManager: SessionManager{
         }
     }
     
-    func getTimeline() {
+    func getTimeline(completion: @escaping (Any?) -> ()) {
         handle = oauthManager.client.get("https://api.twitter.com/1.1/statuses/user_timeline.json", parameters: ["screen_name": user.name]) { results in
             switch results {
             case .success(let response):
                 let jsonDict = try? response.jsonObject()
                 print(String(describing: jsonDict))
+                completion(jsonDict)
+                
+                
             case .failure(let error):
                 print(error)
             }
@@ -116,7 +131,49 @@ class APIManager: SessionManager{
         }
     }
     
-    func logOut(success: @escaping () -> (), failure: @escaping (Error?) -> ()) {
+    /*func getHomeTimeLine(completion: @escaping ([Tweet]?, Error?) -> ()) {
+
+        // This uses tweets from disk to avoid hitting rate limit. Comment out if you want fresh
+        // tweets,
+        if let data = UserDefaults.standard.object(forKey: "hometimeline_tweets") as? Data {
+            let tweetDictionaries = NSKeyedUnarchiver.unarchiveObject(with: data) as! [[String: Any]]
+            let tweets = tweetDictionaries.compactMap({ (dictionary) -> Tweet in
+                Tweet(dictionary: dictionary)
+            })
+
+            completion(tweets, nil)
+            return
+        }
+
+        request(URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, method: .get)
+            .validate()
+            .responseJSON { (response) in
+                switch response.result {
+                case .failure(let error):
+                    completion(nil, error)
+                    return
+                case .success:
+                    guard let tweetDictionaries = response.result.value as? [[String: Any]] else {
+                        print("Failed to parse tweets")
+                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Failed to parse tweets"])
+                        completion(nil, error)
+                        return
+                    }
+
+                    let data = NSKeyedArchiver.archivedData(withRootObject: tweetDictionaries)
+                    UserDefaults.standard.set(data, forKey: "hometimeline_tweets")
+                    UserDefaults.standard.synchronize()
+
+                    let tweets = tweetDictionaries.compactMap({ (dictionary) -> Tweet in
+                        Tweet(dictionary: dictionary)
+                    })
+                    completion(tweets, nil)
+                }
+        }
+    }*/
+
+    
+    func logOut(completion: @escaping () -> ()) {
         checkAccessToken()
         // create the alert
         let alertController = UIAlertController(title: "Log out", message: "Clear token from userdefaults?", preferredStyle: .alert)
@@ -125,6 +182,7 @@ class APIManager: SessionManager{
               UIAlertAction in
             self.clearCredentials()
             self.checkAccessToken()
+            completion()
           }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
@@ -136,6 +194,9 @@ class APIManager: SessionManager{
         alertController.addAction(clearAction)
 
         topMostController().present(alertController, animated: true, completion: nil)
+        
+        
+      
     }
 
     
