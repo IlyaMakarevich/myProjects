@@ -11,16 +11,6 @@ import Alamofire
 import OAuthSwift
 import KeychainAccess
 
-struct TweetModel {
-    let created_at: String
-    let text: String
-    
-    init(json: [String: Any]) {
-        created_at = json["created_at"] as? String ?? ""
-        text = json["text"] as? String ?? ""
-    }
-}
-
 class APIManager: SessionManager{
     
     static var shared: APIManager = APIManager()
@@ -30,6 +20,7 @@ class APIManager: SessionManager{
     var user = User(name: "")
     let defaults = UserDefaults.standard
     let homeVC = HomeViewController()
+    var tweets = [Tweet3]()
     
     private init () {
         super.init()
@@ -115,14 +106,27 @@ class APIManager: SessionManager{
         }
     }
     
-    func getTimeline(completion: @escaping (Any?) -> ()) {
+    func getTimeline(completion: @escaping ([[String: Any]]) -> Void) {
+
         handle = oauthManager.client.get("https://api.twitter.com/1.1/statuses/user_timeline.json", parameters: ["screen_name": user.name]) { results in
+            
             switch results {
             case .success(let response):
-                let jsonDict = try? response.jsonObject()
-                print(String(describing: jsonDict))
-                completion(jsonDict)
+                let jsonDict = try? response.jsonObject() as? [[String: Any]]
                 
+                
+                print(String(describing: jsonDict))
+                guard let text = jsonDict![0]["text"] else {return}
+                print(text)
+                
+                for dic in jsonDict! {
+                    self.tweets.append(Tweet3(json: dic)!)
+                }
+                
+                for dic in jsonDict! {
+                    print(dic)
+                               }
+             
                 
             case .failure(let error):
                 print(error)
@@ -248,3 +252,9 @@ class APIManager: SessionManager{
         return topController
     }
 }
+
+
+
+class Foo {}
+let foo: AnyObject = Foo()
+let user = foo["user"]

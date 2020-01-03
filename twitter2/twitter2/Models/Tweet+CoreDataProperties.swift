@@ -16,10 +16,12 @@ extension Tweet {
         return NSFetchRequest<Tweet>(entityName: "Tweet")
     }
 
-    @NSManaged public var screen_name: String?
-    @NSManaged public var name: String?
-    @NSManaged public var text: String?
-    @NSManaged public var created_at: String?
-    @NSManaged public var profile_image_url: String?
-
+    
+     @NSManaged public var screen_name: String?
+     @NSManaged public var name: String?
+     @NSManaged public var text: String?
+     @NSManaged public var created_at: String?
+     @NSManaged public var profile_image_url: String?
+     
+    
 }

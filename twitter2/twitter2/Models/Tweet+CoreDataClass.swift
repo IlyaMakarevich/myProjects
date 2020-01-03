@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 
-public class Tweet: NSManagedObject {
+class Tweet: NSManagedObject{
+
 
 }
