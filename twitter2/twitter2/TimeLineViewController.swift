@@ -21,10 +21,13 @@ class TimeLineViewController: UIViewController, UITableViewDelegate, UITableView
         }
         timeLineTableView.delegate = self
         timeLineTableView.dataSource = self
+
+        timeLineTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        9
+        return APIManager.shared.tweets.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

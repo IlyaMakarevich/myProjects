@@ -20,32 +20,33 @@ class APIManager: SessionManager{
     var user = User(name: "")
     let defaults = UserDefaults.standard
     let homeVC = HomeViewController()
-    var tweets = [Tweet3]()
+    var tweets = Set<TweetHashable>()
+
     
     private init () {
         super.init()
         //create instance
         oauthManager = OAuth1Swift(
-               consumerKey:    Keys.twitterConsumerKey,
-               consumerSecret: Keys.twitterSecretKey,
-               requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-               authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-               accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
-           )
+            consumerKey:    Keys.twitterConsumerKey,
+            consumerSecret: Keys.twitterSecretKey,
+            requestTokenUrl: "https://api.twitter.com/oauth/request_token",
+            authorizeUrl:    "https://api.twitter.com/oauth/authorize",
+            accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
+        )
         
         // Retrieve access token from keychain if it exists
-            if let credential = retrieveCredentials() {
-                oauthManager.client.credential.oauthToken = credential.oauthToken
-                print(credential.oauthToken)
-                oauthManager.client.credential.oauthTokenSecret = credential.oauthTokenSecret
-                print(credential.oauthTokenSecret)
-            }
+        if let credential = retrieveCredentials() {
+            oauthManager.client.credential.oauthToken = credential.oauthToken
+            print(credential.oauthToken)
+            oauthManager.client.credential.oauthTokenSecret = credential.oauthTokenSecret
+            print(credential.oauthTokenSecret)
+        }
         
         if let user = defaults.string(forKey: "screen_name") {
             self.user.name = user
         }
     }
-   
+
     
     //Twitter api methods
 
@@ -108,26 +109,20 @@ class APIManager: SessionManager{
     
     func getTimeline(completion: @escaping ([[String: Any]]) -> Void) {
 
-        handle = oauthManager.client.get("https://api.twitter.com/1.1/statuses/user_timeline.json", parameters: ["screen_name": user.name]) { results in
+        handle = oauthManager.client.get("https://api.twitter.com/1.1/statuses/home_timeline.json", parameters: ["count": 7]) { results in
             
             switch results {
             case .success(let response):
-                let jsonDict = try? response.jsonObject() as? [[String: Any]]
-                
-                
-                print(String(describing: jsonDict))
-                guard let text = jsonDict![0]["text"] else {return}
-                print(text)
-                
-                for dic in jsonDict! {
-                    self.tweets.append(Tweet3(json: dic)!)
+                if let tweetsFromJSON = try? JSONDecoder().decode([Tweet].self, from: response.data) {
+                    print(tweetsFromJSON)
+                    self.tweets = Set(tweetsFromJSON.map {
+                        TweetHashable(id: $0.id, createdAt: $0.createdAt,
+                        text: $0.text, profileImageUrl: $0.profileImageUrl,
+                        name: $0.name, screenName: $0.screenName)
+                    })
+                    print(self.tweets.count)
                 }
-                
-                for dic in jsonDict! {
-                    print(dic)
-                               }
-             
-                
+
             case .failure(let error):
                 print(error)
             }
@@ -135,64 +130,22 @@ class APIManager: SessionManager{
         }
     }
     
-    /*func getHomeTimeLine(completion: @escaping ([Tweet]?, Error?) -> ()) {
-
-        // This uses tweets from disk to avoid hitting rate limit. Comment out if you want fresh
-        // tweets,
-        if let data = UserDefaults.standard.object(forKey: "hometimeline_tweets") as? Data {
-            let tweetDictionaries = NSKeyedUnarchiver.unarchiveObject(with: data) as! [[String: Any]]
-            let tweets = tweetDictionaries.compactMap({ (dictionary) -> Tweet in
-                Tweet(dictionary: dictionary)
-            })
-
-            completion(tweets, nil)
-            return
-        }
-
-        request(URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, method: .get)
-            .validate()
-            .responseJSON { (response) in
-                switch response.result {
-                case .failure(let error):
-                    completion(nil, error)
-                    return
-                case .success:
-                    guard let tweetDictionaries = response.result.value as? [[String: Any]] else {
-                        print("Failed to parse tweets")
-                        let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Failed to parse tweets"])
-                        completion(nil, error)
-                        return
-                    }
-
-                    let data = NSKeyedArchiver.archivedData(withRootObject: tweetDictionaries)
-                    UserDefaults.standard.set(data, forKey: "hometimeline_tweets")
-                    UserDefaults.standard.synchronize()
-
-                    let tweets = tweetDictionaries.compactMap({ (dictionary) -> Tweet in
-                        Tweet(dictionary: dictionary)
-                    })
-                    completion(tweets, nil)
-                }
-        }
-    }*/
-
-    
     func logOut(completion: @escaping () -> ()) {
         checkAccessToken()
         // create the alert
         let alertController = UIAlertController(title: "Log out", message: "Clear token from userdefaults?", preferredStyle: .alert)
 
         let clearAction = UIAlertAction(title: "Clear token", style: UIAlertAction.Style.default) {
-              UIAlertAction in
+            UIAlertAction in
             self.clearCredentials()
             self.checkAccessToken()
             completion()
-          }
+        }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
-                 UIAlertAction in
-                 NSLog("Cancel Pressed")
-             }
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
 
         alertController.addAction(cancelAction)
         alertController.addAction(clearAction)
@@ -200,7 +153,7 @@ class APIManager: SessionManager{
         topMostController().present(alertController, animated: true, completion: nil)
         
         
-      
+
     }
 
     
