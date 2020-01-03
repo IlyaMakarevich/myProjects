@@ -102,6 +102,7 @@
 			children = (
 				A40682F123AF950B004C079C /* AppDelegate.swift */,
 				A4AAA27323B13E750068C0A3 /* SceneDelegate.swift */,
+				A445862423BD390B001221F8 /* CoreDataStack.swift */,
 				A4AAA27523B149FF0068C0A3 /* Models */,
 				A40682F523AF950B004C079C /* ViewController.swift */,
 				A4C6942F23B2A4F200673D08 /* ProfileViewController.swift */,
@@ -121,7 +122,6 @@
 		A4AAA27523B149FF0068C0A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A445862423BD390B001221F8 /* CoreDataStack.swift */,
 				A4B3DC6C23BE7F1D00692EDF /* Tweet.swift */,
 				A4AAA27623B14A0E0068C0A3 /* User.swift */,
 				A44585EA23BB533B001221F8 /* Model.xcdatamodeld */,
