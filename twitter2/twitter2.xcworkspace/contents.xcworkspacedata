@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/ilyamakarevich/Swift iOS Practice/myProjects/twitter2/twitter2/Models/Tweet+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ilyamakarevich/Swift iOS Practice/myProjects/twitter2/twitter2/Models/Tweet+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:twitter2.xcodeproj">
    </FileRef>
    <FileRef

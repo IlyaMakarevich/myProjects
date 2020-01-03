@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct Tweet: Decodable{
+struct TweetDecodable: Decodable{
 
-    var id: Double
+    var id_str: String
     var createdAt: String
     var text: String
 
-    var profileImageUrl: URL
+    var profileImageUrl: String
     var name: String
     var screenName: String
     
     enum TweetJsonRootKeys: String, CodingKey {
-        case id
+        case id_str
         case createdAt = "created_at"
         case text
         case user
@@ -34,23 +34,23 @@ struct Tweet: Decodable{
     init(from decoder: Decoder) throws {
         print("Init from decoder")
         let rootContainer = try decoder.container(keyedBy: TweetJsonRootKeys.self)
-        self.id = try rootContainer.decode(Double.self, forKey: .id)
+        self.id_str = try rootContainer.decode(String.self, forKey: .id_str)
         self.createdAt = try rootContainer.decode(String.self, forKey: .createdAt)
         self.text = try rootContainer.decode(String.self, forKey: .text)
         let userContainer = try rootContainer.nestedContainer(keyedBy: UserJsonKeys.self, forKey: .user)
-        self.profileImageUrl = try userContainer.decode(URL.self, forKey: .profileImageUrl)
+        self.profileImageUrl = try userContainer.decode(String.self, forKey: .profileImageUrl)
         self.name = try userContainer.decode(String.self, forKey: .name)
         self.screenName = try userContainer.decode(String.self, forKey: .screenName)
     }
 }
 
-struct TweetHashable: Hashable {
+struct TweetStruct {
 
-    var id: Double
+    var id_str: String
     var createdAt: String
     var text: String
 
-    var profileImageUrl: URL
+    var profileImageUrl: String
     var name: String
     var screenName: String
 

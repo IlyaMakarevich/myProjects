@@ -20,7 +20,7 @@ class APIManager: SessionManager{
     var user = User(name: "")
     let defaults = UserDefaults.standard
     let homeVC = HomeViewController()
-    var tweets = Set<TweetHashable>()
+    var tweets = [TweetStruct]()
 
     
     private init () {
@@ -107,20 +107,20 @@ class APIManager: SessionManager{
         }
     }
     
-    func getTimeline(completion: @escaping ([[String: Any]]) -> Void) {
+    func getTimeline(completion: @escaping ([TweetStruct]) -> Void) {
 
-        handle = oauthManager.client.get("https://api.twitter.com/1.1/statuses/home_timeline.json", parameters: ["count": 7]) { results in
+        handle = oauthManager.client.get("https://api.twitter.com/1.1/statuses/home_timeline.json", parameters: ["count": 20,  "exclude_replies" : "true"]) { results in
             
             switch results {
             case .success(let response):
-                if let tweetsFromJSON = try? JSONDecoder().decode([Tweet].self, from: response.data) {
+                if let tweetsFromJSON = try? JSONDecoder().decode([TweetDecodable].self, from: response.data) {
                     print(tweetsFromJSON)
-                    self.tweets = Set(tweetsFromJSON.map {
-                        TweetHashable(id: $0.id, createdAt: $0.createdAt,
+                    self.tweets = tweetsFromJSON.map ({
+                        TweetStruct(id_str: $0.id_str, createdAt: $0.createdAt,
                         text: $0.text, profileImageUrl: $0.profileImageUrl,
                         name: $0.name, screenName: $0.screenName)
                     })
-                    print(self.tweets.count)
+                    completion(self.tweets)
                 }
 
             case .failure(let error):
