@@ -4,4 +4,5 @@ target 'twitter2' do
     pod 'Alamofire'
     pod 'OAuthSwift'
     pod 'KeychainAccess'
+    pod 'AlamofireImage'
 end

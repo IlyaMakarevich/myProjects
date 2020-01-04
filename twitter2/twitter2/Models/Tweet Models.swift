@@ -1,5 +1,5 @@
 //
-//  Tweet2.swift
+//  Tweet.swift
 //  twitter2
 //
 //  Created by MacBook Pro  on 02.01.2020.

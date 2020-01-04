@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AlamofireImage
 
 class TimeLineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -96,11 +97,15 @@ class TimeLineViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TwitterTableViewCell
         if let cell_tweet = fetchedhResultController.object(at: indexPath) as? Tweet {
             cell.nameLabel.text = cell_tweet.name
-            cell.tweetLabel.text = cell_tweet.text
+            cell.tweetTextView.text = cell_tweet.text
+            cell.dateLabel.text = cell_tweet.created_at
+            let URL = NSURL(string: cell_tweet.profile_image_url!)!
+            cell.avatarImage.af_setImage(withURL: URL as URL)
         }
         return cell
     }
-    
+
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
