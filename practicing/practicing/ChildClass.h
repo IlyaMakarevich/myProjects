@@ -12,8 +12,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum {
+    GenderMale,
+    GenderFemale
+} ChildGender;
+
+
+
+
 @interface ChildClass: ParentClass
-    
+ 
+@property (assign, nonatomic) ChildGender gender;
 
 
 @end

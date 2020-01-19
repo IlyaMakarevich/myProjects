@@ -8,7 +8,6 @@
 
 #import "ChildClass.h"
 
-
 @implementation ChildClass: ParentClass
 
 - (id)init

@@ -26,6 +26,17 @@
     [parent say:@"1" and:@"2" andAfterThat:@"3"];
     NSLog(@"%@", [parent saySomething]); 
     [ChildClass whoAreYou];
+    [parent setGender:GenderMale];
+    
+    BOOL boolVar = TRUE;
+    NSInteger intVar = 29;
+    NSNumber* intObject = [NSNumber numberWithInteger:intVar];
+    
+    NSArray *array  = [NSArray arrayWithObjects:intObject,intObject, nil];
+    for (NSObject* object in array) {
+        NSLog(@"%@", object);
+    }
+    
 }
 
 
