@@ -61,31 +61,37 @@
 -(void) searchCity {
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET: @"https://api.opencagedata.com/geocode/v1/json?q=Minsk&key=df1cec4851fb4f5fbb632a272d56b5b3" parameters:nil progress:nil success:^(NSURLSessionDataTask * task, id responseObject) {
-        NSArray* jsonArray = (NSArray *) responseObject;
-        NSLog(@"%@",jsonArray);
+        NSDictionary* responseDict = responseObject;
+        NSLog(@"JSON: %@",responseDict);
+
         NSMutableArray* tempCities = [[NSMutableArray alloc] init];
         
-        for(NSDictionary* dic in jsonArray) {
-            City* city = [[City alloc] initWithDictionary:dic];
+        for(NSDictionary* dic in responseDict[@"results"]) {
+            City* city = [[City alloc]
+                          initWithCity:[[dic valueForKey:@"components"] objectForKey:@"state"]
+                          country:[[dic valueForKey:@"components"] objectForKey:@"country"]
+                          lat:[[dic valueForKey:@"geometry"] objectForKey:@"lat"]
+                          lng:[[dic valueForKey:@"geometry"] objectForKey:@"lng"]];
             [tempCities addObject:city];
+            [tempCities description];
         }
         
         self.cities = [[NSArray alloc]initWithArray:tempCities];
         tempCities = nil;
         [self.tableView reloadData];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-    
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Error Retrieving Cities"
-                                                                     message:[error localizedDescription]
-                                                              preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    
-    [alertVC addAction:okAction];
-    
-    [self presentViewController:alertVC animated:YES completion:nil];
+
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Error Retrieving Cities"
+                                                                         message:[error localizedDescription]
+                                                                  preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+
+        [alertVC addAction:okAction];
+
+        [self presentViewController:alertVC animated:YES completion:nil];
     }];
 }
 

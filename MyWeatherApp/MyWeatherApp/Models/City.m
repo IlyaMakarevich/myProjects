@@ -16,26 +16,26 @@
 - (instancetype)initWithCity:(NSString*)aCity
                      country:(NSString*)aCountry
                          lat:(NSNumber*)aLat
-                         lon:(NSNumber*)aLon{
+                         lng:(NSNumber*)aLng{
     self = [super init];
     
     if (self) {
         self.city = aCity;
         self.country = aCountry;
         self.lat = aLat;
-        self.lon = aLon;
+        self.lng = aLng;
     }
     
     return self;
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dic {
-    self = [self initWithCity:dic[@"city"] country:dic[@"country"] lat:dic[@"lat"] lon:dic[@"lon"]];
+    self = [self initWithCity:dic[@"state"] country:dic[@"country"] lat:dic[@"lat"] lng:dic[@"lng"]];
     return self;
 }
 
 -(instancetype) init {
-    self = [self initWithCity:@"undefined" country:@"undefined" lat:0 lon:0];
+    self = [self initWithCity:@"undefined" country:@"undefined" lat:0 lng:0];
     return self;
 }
 

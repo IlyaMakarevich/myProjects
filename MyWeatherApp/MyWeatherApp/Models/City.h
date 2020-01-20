@@ -13,12 +13,12 @@
 @property (strong, nonatomic)NSString* city;
 @property (strong, nonatomic)NSString* country;
 @property (assign, nonatomic)NSNumber* lat;
-@property (assign, nonatomic)NSNumber* lon;
+@property (assign, nonatomic)NSNumber* lng;
 
 - (id)initWithCity:(NSString *)aCity
            country:(NSString *)aCountry
                lat:(NSNumber *)aLat
-               lon:(NSNumber *)aLon;
+               lng:(NSNumber *)aLng;
 
 
 - (id)initWithDictionary:(NSDictionary *)dic;
