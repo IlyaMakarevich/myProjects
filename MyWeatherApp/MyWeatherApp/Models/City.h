@@ -10,15 +10,15 @@
 
 @interface City : NSObject
 
-@property (strong, nonatomic)NSString *city;
-@property (strong, nonatomic)NSString *country;
-@property (assign, nonatomic)NSInteger lat;
-@property (assign, nonatomic)NSInteger lon;
+@property (strong, nonatomic)NSString* city;
+@property (strong, nonatomic)NSString* country;
+@property (assign, nonatomic)NSNumber* lat;
+@property (assign, nonatomic)NSNumber* lon;
 
 - (id)initWithCity:(NSString *)aCity
            country:(NSString *)aCountry
-               lat:(NSInteger)aLat
-               lon:(NSInteger)aLon;
+               lat:(NSNumber *)aLat
+               lon:(NSNumber *)aLon;
 
 
 - (id)initWithDictionary:(NSDictionary *)dic;

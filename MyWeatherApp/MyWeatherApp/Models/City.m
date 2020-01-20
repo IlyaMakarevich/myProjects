@@ -13,10 +13,10 @@
 @implementation City
 
 //The designated initializer
-- (instancetype)initWithCity:(NSString *)aCity
-                     country:(NSString *)aCountry
-                         lat:(NSInteger)aLat
-                         lon:(NSInteger)aLon{
+- (instancetype)initWithCity:(NSString*)aCity
+                     country:(NSString*)aCountry
+                         lat:(NSNumber*)aLat
+                         lon:(NSNumber*)aLon{
     self = [super init];
     
     if (self) {
