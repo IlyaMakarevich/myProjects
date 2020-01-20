@@ -22,13 +22,9 @@
     [super viewDidLoad];
     _citySearchBar.text = @"enter city...";
     self.title = @"Search";
-    
-    //for test
-    self.cities = @[@"Minsk",@"Brest",@"Vitebsk"];
 }
 
 #pragma mark - TableView data source
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -60,7 +56,10 @@
 
 -(void) searchCity {
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
-    [manager GET: @"https://api.opencagedata.com/geocode/v1/json?q=Minsk&key=df1cec4851fb4f5fbb632a272d56b5b3" parameters:nil progress:nil success:^(NSURLSessionDataTask * task, id responseObject) {
+    [manager GET: @"https://api.opencagedata.com/geocode/v1/json"
+        parameters:@{@"q=" : self.searchTextValue,
+                   @"key=" : @"df1cec4851fb4f5fbb632a272d56b5b3" }
+        progress:nil success:^(NSURLSessionDataTask * task, id responseObject) {
         NSDictionary* responseDict = responseObject;
         NSLog(@"JSON: %@",responseDict);
 
@@ -78,7 +77,11 @@
         
         self.cities = [[NSArray alloc]initWithArray:tempCities];
         tempCities = nil;
+        for (City* city in self.cities) {
+            NSLog(@"%@", city);
+        }
         [self.tableView reloadData];
+
     } failure:^(NSURLSessionTask *operation, NSError *error) {
 
         UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"Error Retrieving Cities"
