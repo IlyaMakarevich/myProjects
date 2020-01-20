@@ -40,8 +40,9 @@
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat:@"%@: %@", self.city, self.country];
+    return [NSString stringWithFormat:@"%@, %@ - [%@, %@]", [self city], [self country], [self lat ], [self lng] ];
 }
+
 
 
 @end

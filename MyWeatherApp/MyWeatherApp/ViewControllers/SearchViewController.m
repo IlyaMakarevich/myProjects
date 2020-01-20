@@ -7,8 +7,8 @@
 //
 
 #import "SearchViewController.h"
-#import "AFNetworking.h"
 #import "Constants.h"
+#import "AFNetworking.h"
 #import "City.h"
 
 @interface SearchViewController ()
@@ -36,10 +36,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = self.cities[indexPath.row];
+    cell.textLabel.text = [self.cities[indexPath.row] description];
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected section>> %ld",(long)indexPath.section);
+    NSLog(@"Selected row of section >> %ld",(long)indexPath.row);
+    NSLog(@"CELL TAPPED: %@", [self.cities[indexPath.row] description]);
+}
 #pragma mark - Search bar
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
@@ -51,14 +56,17 @@
 -(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     self.searchTextValue = searchText;
     NSLog(@"%@", self.searchTextValue);
-    [self searchCity];
+    if (self.searchTextValue.length > 1 ) {
+         [self searchCity];
+    }
+
 }
 
 -(void) searchCity {
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET: @"https://api.opencagedata.com/geocode/v1/json"
-        parameters:@{@"q=" : self.searchTextValue,
-                   @"key=" : @"df1cec4851fb4f5fbb632a272d56b5b3" }
+        parameters:@{@"q" : self.searchTextValue,
+                   @"key" : CITY_API_KEY }
         progress:nil success:^(NSURLSessionDataTask * task, id responseObject) {
         NSDictionary* responseDict = responseObject;
         NSLog(@"JSON: %@",responseDict);
