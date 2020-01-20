@@ -3,26 +3,42 @@
 import UIKit
 import PlaygroundSupport
 
-class MyViewController : UIViewController {
-    override func loadView() {
-        let view = UIView()
-        view.backgroundColor = .white
+protocol DeliverPizzaDelegate {
+    func deliverPizza(type:String)
+}
+class MyViewController {
+    let pizza = "Margaritta"
+    var delegate: DeliverPizzaDelegate?
 
-        let label = UILabel()
-        label.frame = CGRect(x: 150, y: 200, width: 200, height: 20)
-
-        label.text = "Hello World!"
-        label.textColor = .black
-        
-        view.addSubview(label)
-        self.view = view
-
-        //change heigh and width
-        
-        label.frame = CGRect(x: 150, y: 200, width: 5, height: 3)
-
-        
+    func makePizza() {
+        delegate?.deliverPizza(type: pizza)
     }
 }
-// Present the view controller in the Live View window
-PlaygroundPage.current.liveView = MyViewController()
+
+
+class Empployee: DeliverPizzaDelegate{
+    let deleverer = MyViewController()
+
+    func deliverPizza(type: String) {
+        deleverer.delegate = self
+        print("I will deliver \(type)")
+    }
+}
+
+
+let cafe = MyViewController()
+let slave = Empployee()
+cafe.delegate = slave
+
+cafe.makePizza()
+
+class User {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+
+
+
