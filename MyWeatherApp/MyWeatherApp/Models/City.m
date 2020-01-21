@@ -15,8 +15,8 @@
 //The designated initializer
 - (instancetype)initWithCity:(NSString*)aCity
                      country:(NSString*)aCountry
-                         lat:(NSNumber*)aLat
-                         lng:(NSNumber*)aLng{
+                         lat:(CLLocationDegrees)aLat
+                         lng:(CLLocationDegrees)aLng{
     self = [super init];
     
     if (self) {
@@ -30,7 +30,7 @@
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dic {
-    self = [self initWithCity:dic[@"state"] country:dic[@"country"] lat:dic[@"lat"] lng:dic[@"lng"]];
+    self = [self initWithCity:dic[@"state"] country:dic[@"country"] lat:30.0 lng:31.1];
     return self;
 }
 
@@ -40,8 +40,10 @@
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat:@"%@, %@ - [%@, %@]", [self city], [self country], [self lat ], [self lng] ];
+    return [NSString stringWithFormat:@"%@, %@ - [%f, %f]", [self city], [self country], self.lat, self.lng];
 }
+
+
 
 
 

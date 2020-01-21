@@ -7,19 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface City : NSObject
 
 @property (strong, nonatomic)NSString* city;
 @property (strong, nonatomic)NSString* country;
-@property (assign, nonatomic)NSNumber* lat;
-@property (assign, nonatomic)NSNumber* lng;
+@property (assign, nonatomic)CLLocationDegrees lat;
+@property (assign, nonatomic)CLLocationDegrees lng;
+@property (assign, nonatomic)CLLocationCoordinate2D location;
+
 
 - (id)initWithCity:(NSString *)aCity
            country:(NSString *)aCountry
-               lat:(NSNumber *)aLat
-               lng:(NSNumber *)aLng;
-
+               lat:(CLLocationDegrees)aLat
+               lng:(CLLocationDegrees )aLng;
 
 - (id)initWithDictionary:(NSDictionary *)dic;
 

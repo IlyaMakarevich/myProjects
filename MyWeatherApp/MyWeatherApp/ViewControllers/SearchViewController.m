@@ -43,7 +43,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected section>> %ld",(long)indexPath.section);
     NSLog(@"Selected row of section >> %ld",(long)indexPath.row);
-    NSLog(@"CELL TAPPED: %@", [self.cities[indexPath.row] description]);
+    NSLog(@"%@", [self.cities[indexPath.row] description]);
 }
 #pragma mark - Search bar
 
@@ -77,8 +77,8 @@
             City* city = [[City alloc]
                           initWithCity:[[dic valueForKey:@"components"] objectForKey:@"state"]
                           country:[[dic valueForKey:@"components"] objectForKey:@"country"]
-                          lat:[[dic valueForKey:@"geometry"] objectForKey:@"lat"]
-                          lng:[[dic valueForKey:@"geometry"] objectForKey:@"lng"]];
+                          lat:[[[dic valueForKey:@"geometry"] objectForKey:@"lat"] doubleValue]
+                          lng:[[[dic valueForKey:@"geometry"] objectForKey:@"lng"] doubleValue]];
             [tempCities addObject:city];
             [tempCities description];
         }
