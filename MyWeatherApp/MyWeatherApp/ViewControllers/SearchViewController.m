@@ -43,7 +43,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected section>> %ld",(long)indexPath.section);
     NSLog(@"Selected row of section >> %ld",(long)indexPath.row);
-    NSLog(@"%@", [self.cities[indexPath.row] description]);
+    NSString* info = [self.cities[indexPath.row] description];
+
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"INFO"
+                                                                     message:((void)(@"%@"),info)
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:nil];
+
+    [alertVC addAction:okAction];
+
+    [self presentViewController:alertVC animated:YES completion:nil];
+
 }
 #pragma mark - Search bar
 
