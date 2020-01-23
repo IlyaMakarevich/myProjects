@@ -12,7 +12,7 @@
 
 
 
-@interface SearchViewController ()
+@interface SearchViewController () 
 
 @property (strong, nonatomic)NSString* searchTextValue;
 @end
@@ -128,7 +128,22 @@
     }];
 }
 
+-(NSManagedObjectContext *) managedObjectContext {
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+-(void) save:(City*) city {
+    NSManagedObjectContext* context = [self managedObjectContext];
+}
+
 - (IBAction)closeBtn:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 @end
