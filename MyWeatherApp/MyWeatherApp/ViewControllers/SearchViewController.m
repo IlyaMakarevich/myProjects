@@ -9,14 +9,16 @@
 #import "SearchViewController.h"
 #import "Constants.h"
 #import "AFNetworking.h"
-#import "City.h"
+
+
 
 @interface SearchViewController ()
-@property (strong, nonatomic)NSArray* cities;
+
 @property (strong, nonatomic)NSString* searchTextValue;
 @end
 
 @implementation SearchViewController
+@synthesize delegate;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,9 +45,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected section>> %ld",(long)indexPath.section);
     NSLog(@"Selected row of section >> %ld",(long)indexPath.row);
-    NSString* info = [self.cities[indexPath.row] description];
+    
+    if ([self.delegate respondsToSelector:@selector(didChooseValue:)]) {
+        [self.delegate didChooseValue:self.cities[indexPath.row]];
+    }
+    
+    [self dismissModalViewControllerAnimated:YES];
 
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"INFO"
+    //NSString* info = [self.cities[indexPath.row] description];
+    /*IAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"INFO"
                                                                      message:((void)(@"%@"),info)
                                                               preferredStyle:UIAlertControllerStyleAlert];
 
@@ -55,7 +63,7 @@
 
     [alertVC addAction:okAction];
 
-    [self presentViewController:alertVC animated:YES completion:nil];
+    [self presentViewController:alertVC animated:YES completion:nil];*/
 
 }
 #pragma mark - Search bar

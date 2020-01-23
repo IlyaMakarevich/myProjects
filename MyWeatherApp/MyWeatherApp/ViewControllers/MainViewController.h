@@ -8,12 +8,15 @@
 
 
 #import <UIKit/UIKit.h>
+#import "SearchViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainViewController: UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface MainViewController: UIViewController <UITableViewDelegate, UITableViewDataSource, SearchDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
+
+- (IBAction)addCity:(id)sender;
 
 @end
 
