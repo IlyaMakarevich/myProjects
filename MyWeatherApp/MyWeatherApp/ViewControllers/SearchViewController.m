@@ -50,7 +50,8 @@
         [self.delegate didChooseValue:self.cities[indexPath.row]];
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+
+    [self.navigationController popViewControllerAnimated:YES];
 
     //NSString* info = [self.cities[indexPath.row] description];
     /*IAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"INFO"
@@ -127,4 +128,7 @@
     }];
 }
 
+- (IBAction)closeBtn:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

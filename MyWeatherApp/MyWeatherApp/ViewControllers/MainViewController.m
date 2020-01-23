@@ -26,9 +26,10 @@
     
     SearchViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
     vc.delegate = self;
-     UINavigationController *objNav = [[UINavigationController alloc] initWithRootViewController:vc];
-    objNav.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [self presentViewController:objNav animated:YES completion:nil];
+    UINavigationController *objNav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [objNav setModalPresentationStyle:UIModalPresentationFullScreen];
+    [self.navigationController pushViewController:vc animated:YES];
+   // [self presentViewController:objNav animated:YES completion:nil];
     NSLog(@"+ tapped");
 }
 
