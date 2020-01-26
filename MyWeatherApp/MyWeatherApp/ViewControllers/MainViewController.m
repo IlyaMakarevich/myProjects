@@ -25,8 +25,18 @@
 -(void) didChooseValue:(City*) city {
     NSLog(@"%@", _fetchedCities);
     [_fetchedCities addObject:city];
+    NSLog(@"%@", _fetchedCities);
     [self saveData:city];
+    [self updateCitesNumbers];
     [self.table reloadData];
+}
+
+- (IBAction)edit:(UIBarButtonItem *)sender {
+    if (self.table.isEditing) {
+        self.table.editing = NO;
+    } else {
+        self.table.editing = YES;
+    }
 }
 
 -(void)addCity:(id)sender {
@@ -42,20 +52,10 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
+    self.fetchedCities = [NSMutableArray array];
     _table.allowsMultipleSelectionDuringEditing = false;
-    
-    //Get Context
-    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    context = appDelegate.persistentContainer.viewContext;
-    
-    //Load data
-   // [self updateCity];
-//    NSFetchRequest* requestCity = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-//    NSArray* results = [context executeFetchRequest:requestCity error:nil];
-//    NSLog(@"%@", results);
-    [self basicFetch];
+    [self fetchWithSort];
     [self updateCitesNumbers];
-    NSLog(@"%@", _fetchedCities);
 }
 
 #pragma mark -Core data methods-
@@ -82,7 +82,8 @@
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
        context = appDelegate.persistentContainer.viewContext;
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    _fetchedCities = [context executeFetchRequest:request error:nil];
+    NSArray* results = [context executeFetchRequest:request error:nil];
+    [_fetchedCities setArray:results];
     [self printResultsFromArray:_fetchedCities];
 }
 
@@ -90,21 +91,20 @@
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
        context = appDelegate.persistentContainer.viewContext;
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    NSSortDescriptor* cityDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"city" ascending:YES];
+    NSSortDescriptor* cityDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"number" ascending:YES];
     request.sortDescriptors = @[cityDescriptor];
-   NSArray <City*>* cities = [context executeFetchRequest:request error:nil];
-    [self printResultsFromArray:cities];
+   NSArray* results = [context executeFetchRequest:request error:nil];
+   [_fetchedCities setArray:results];
+   [self printResultsFromArray:_fetchedCities];
 }
 
--(NSArray <City*>*) fetchWithFilter {
+-(NSArray <NSManagedObject*>*) fetchArray {
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
        context = appDelegate.persistentContainer.viewContext;
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"city contains[cd] 'Minsk'"];
+    NSPredicate* predicate = nil;
     request.predicate = predicate;
-    NSArray <City*>* cities = [context executeFetchRequest:request error:nil];
-    [self printResultsFromArray:cities];
+    NSArray <NSManagedObject*>* cities = [context executeFetchRequest:request error:nil];
     return cities;
 }
 
@@ -113,9 +113,10 @@
     NSLog(@"%@",_fetchedCities);
     for (City* city in _fetchedCities) {
         counter+=1;
-        city.number = [NSNumber numberWithInt:counter];
+        city.number = counter;
     }
     [appDelegate saveContext];
+    NSLog(@"%@",_fetchedCities);
 }
 
 
@@ -137,8 +138,9 @@
     
     NSString* cityName = [[_fetchedCities valueForKey:@"city"] objectAtIndex:indexPath.row];
     NSString* countryName = [[_fetchedCities valueForKey:@"country"] objectAtIndex:indexPath.row];
+    NSString* countryNumber = [[_fetchedCities valueForKey:@"number"] objectAtIndex:indexPath.row];
 
-    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@", cityName, countryName];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@, %@", countryNumber, cityName, countryName];
     
     return cell;
 }
@@ -151,22 +153,29 @@
     return YES;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+   return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath{
+    
+ }
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-           context = appDelegate.persistentContainer.viewContext;
+        context = appDelegate.persistentContainer.viewContext;
 
-        [context deleteObject:_fetchedCities[indexPath.row]];
-        NSLog(@"%@", context);
-        NSLog(@"%@", _fetchedCities);
-
-
-        [_fetchedCities removeObjectAtIndex:indexPath.row];
-        NSLog(@"%@", context);
-        NSLog(@"%@", _fetchedCities);
-
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        City* cityToDelete = [_fetchedCities objectAtIndex:indexPath.row];
+        [_fetchedCities removeObject:cityToDelete];
+       
+        NSManagedObject* object = [self fetchArray][indexPath.row];
+        [context deleteObject:object];
+        
+        [appDelegate saveContext];
+        [self updateCitesNumbers];
+        [self.table reloadData];
     }
 }
 

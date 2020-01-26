@@ -17,7 +17,7 @@
                      country:(NSString*)aCountry
                          lat:(CLLocationDegrees)aLat
                          lng:(CLLocationDegrees)aLng
-                      number:(NSNumber*)aNumber{
+                      number:(int)aNumber{
     self = [super init];
     
     if (self) {
@@ -42,7 +42,7 @@
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat:@"%@: %@, %@ - [%f, %f]", [self number], [self city], [self country], self.lat, self.lng];
+    return [NSString stringWithFormat:@"%@, %@ - [%f, %f]", [self city], [self country], self.lat, self.lng];
 }
 
 

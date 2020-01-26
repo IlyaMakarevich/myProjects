@@ -70,6 +70,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="702-hJ-DXi">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="edit" id="lEp-DA-KfV">
+                            <connections>
+                                <action selector="edit:" destination="BYZ-38-t0r" id="jqD-hz-h8c"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JSL-FR-R6j">
                             <connections>
                                 <action selector="addCity:" destination="BYZ-38-t0r" id="nPA-ak-d9t"/>

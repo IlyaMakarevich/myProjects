@@ -101,7 +101,7 @@
                           country:[[dic valueForKey:@"components"] objectForKey:@"country"]
                           lat:[[[dic valueForKey:@"geometry"] objectForKey:@"lat"] doubleValue]
                           lng:[[[dic valueForKey:@"geometry"] objectForKey:@"lng"] doubleValue]
-                          number: [NSNumber numberWithInt:0]];
+                          number: 0];
             [tempCities addObject:city];
             [tempCities description];
         }

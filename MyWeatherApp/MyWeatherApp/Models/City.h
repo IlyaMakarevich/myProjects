@@ -11,7 +11,7 @@
 
 @interface City : NSObject
 
-@property (strong, nonatomic)NSNumber* number;
+@property (assign, nonatomic)int number;
 @property (strong, nonatomic)NSString* city;
 @property (strong, nonatomic)NSString* country;
 @property (assign, nonatomic)CLLocationDegrees lat;
@@ -23,7 +23,7 @@
            country:(NSString *)aCountry
                lat:(CLLocationDegrees)aLat
                lng:(CLLocationDegrees )aLng
-            number:(NSNumber*)aNumber;
+            number:(int)aNumber;
 
 
 - (id)initWithDictionary:(NSDictionary *)dic;

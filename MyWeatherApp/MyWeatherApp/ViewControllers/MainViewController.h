@@ -9,17 +9,22 @@
 
 #import <UIKit/UIKit.h>
 #import "SearchViewController.h"
+#import <CoreData/CoreData.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol CoreDataTableViewDelegate;
 
-@interface MainViewController: UIViewController <UITableViewDelegate, UITableViewDataSource, SearchDelegate>
+@interface MainViewController: UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, SearchDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
-@property (assign, nonatomic) NSMutableArray* fetchedCities;
+@property (strong, nonatomic) NSMutableArray* fetchedCities;
+@property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 
-
+- (IBAction)edit:(UIBarButtonItem *)sender;
 - (IBAction)addCity:(id)sender;
 
 @end
+
 
 NS_ASSUME_NONNULL_END
