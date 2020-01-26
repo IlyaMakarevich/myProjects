@@ -100,7 +100,8 @@
                           initWithCity:[[dic valueForKey:@"components"] objectForKey:@"state"]
                           country:[[dic valueForKey:@"components"] objectForKey:@"country"]
                           lat:[[[dic valueForKey:@"geometry"] objectForKey:@"lat"] doubleValue]
-                          lng:[[[dic valueForKey:@"geometry"] objectForKey:@"lng"] doubleValue]];
+                          lng:[[[dic valueForKey:@"geometry"] objectForKey:@"lng"] doubleValue]
+                          number: [NSNumber numberWithInt:0]];
             [tempCities addObject:city];
             [tempCities description];
         }
@@ -135,10 +136,6 @@
         context = [delegate managedObjectContext];
     }
     return context;
-}
-
--(void) save:(City*) city {
-    NSManagedObjectContext* context = [self managedObjectContext];
 }
 
 - (IBAction)closeBtn:(id)sender {

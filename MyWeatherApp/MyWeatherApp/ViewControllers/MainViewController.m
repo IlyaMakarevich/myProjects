@@ -16,14 +16,16 @@
     NSManagedObjectContext* context;
     NSArray* dictionaries;
 }
-@property (strong, nonatomic) NSMutableArray* locationsArray;
+
+@property (strong, nonatomic) NSMutableArray* fetchedCities;
+
 @end
 
 @implementation MainViewController
 
 
 -(void) didChooseValue:(City*) city {
-    [self.locationsArray addObject:city];
+    [_fetchedCities addObject:city];
     [self saveData:city];
     [self.table reloadData];
 }
@@ -41,7 +43,6 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
-    _locationsArray = [[NSMutableArray alloc] init];
     _table.allowsMultipleSelectionDuringEditing = false;
     
     //Get Context
@@ -49,34 +50,83 @@
     context = appDelegate.persistentContainer.viewContext;
     
     //Load data
-    NSFetchRequest* requestCity = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    NSArray* results = [context executeFetchRequest:requestCity error:nil];
-    NSLog(@"%@", results);
-    //Log data
-    NSLog(@"City is %@", [results valueForKey:@"city"]);
-    NSLog(@"Country is %@", [results valueForKey:@"country"]);
-    NSLog(@"lat is %@", [results valueForKey:@"lat"]);
-    NSLog(@"lng is %@", [results valueForKey:@"lng"]);
-
-    [_locationsArray addObjectsFromArray:results];
-
+   // [self updateCity];
+//    NSFetchRequest* requestCity = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
+//    NSArray* results = [context executeFetchRequest:requestCity error:nil];
+//    NSLog(@"%@", results);
+    [self basicFetch];
+    [self updateCitesNumbers];
+    NSLog(@"%@", _fetchedCities);
 }
 
 #pragma mark -Core data methods-
 
 -(void) saveData:(City*)city {
+   // NSNumber *count = [NSNumber numberWithInteger:self.locationsArray.count];
     NSManagedObject* entityObj = [NSEntityDescription insertNewObjectForEntityForName:@"CityEntity" inManagedObjectContext:context];
     [entityObj setValue:city.city forKey:@"city"];
     [entityObj setValue:city.country forKey:@"country"];
     [entityObj setValue:[NSNumber numberWithDouble:city.lat] forKey:@"lat"];
-    [entityObj setValue:[NSNumber numberWithDouble:city.lat] forKey:@"lng"];
+    [entityObj setValue:[NSNumber numberWithDouble:city.lng] forKey:@"lng"];
     [appDelegate saveContext];
 }
 
 
 -(void) deleteObject:(int)number {
-    
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    context = appDelegate.persistentContainer.viewContext;
 }
+
+-(NSArray <City*>*) basicFetch {
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+       context = appDelegate.persistentContainer.viewContext;
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
+    NSArray* fetched = [context executeFetchRequest:request error:nil];
+    [self.fetchedCities addObjectsFromArray:fetched];
+    [self printResultsFromArray:self.fetchedCities];
+    return _fetchedCities;
+}
+
+-(void) fetchWithSort {
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+       context = appDelegate.persistentContainer.viewContext;
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
+    NSSortDescriptor* cityDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"city" ascending:YES];
+    request.sortDescriptors = @[cityDescriptor];
+   NSArray <City*>* cities = [context executeFetchRequest:request error:nil];
+    [self printResultsFromArray:cities];
+}
+
+-(NSArray <City*>*) fetchWithFilter {
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+       context = appDelegate.persistentContainer.viewContext;
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
+
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"city contains[cd] 'Minsk'"];
+    request.predicate = predicate;
+    NSArray <City*>* cities = [context executeFetchRequest:request error:nil];
+    [self printResultsFromArray:cities];
+    return cities;
+}
+
+-(void) updateCitesNumbers {
+    int counter = 0;
+    NSLog(@"%@",_fetchedCities);
+    for (City* city in _fetchedCities) {
+        counter+=1;
+        city.number = [NSNumber numberWithInt:counter];
+    }
+    [appDelegate saveContext];
+}
+
+
+
+-(void) printResultsFromArray:(NSArray <City*>*) cities {
+    for (City *city in cities) {
+        NSLog(@"%@,%@,%f,%f", city.city,city.country,city.lat,city.lng);
+    }
+}
+
 
 #pragma mark -Tableview methods-
 
@@ -84,10 +134,10 @@
     NSString* identifier = @"cityCell";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    NSLog(@"%@",_locationsArray);
+    NSLog(@"%@",_fetchedCities);
     
-    NSString* cityName = [[self.locationsArray valueForKey:@"city"] objectAtIndex:indexPath.row];
-    NSString* countryName = [[self.locationsArray valueForKey:@"country"] objectAtIndex:indexPath.row];
+    NSString* cityName = [[_fetchedCities valueForKey:@"city"] objectAtIndex:indexPath.row];
+    NSString* countryName = [[_fetchedCities valueForKey:@"country"] objectAtIndex:indexPath.row];
 
     cell.textLabel.text = [NSString stringWithFormat:@"%@, %@", cityName, countryName];
     
@@ -95,7 +145,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _locationsArray.count;
+    return _fetchedCities.count;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -105,7 +155,18 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
-        [self.locationsArray removeObjectAtIndex:indexPath.row];
+        appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+           context = appDelegate.persistentContainer.viewContext;
+
+        [context deleteObject:_fetchedCities[indexPath.row]];
+        NSLog(@"%@", context);
+        NSLog(@"%@", self.fetchedCities);
+
+
+        [_fetchedCities removeObjectAtIndex:indexPath.row];
+        NSLog(@"%@", context);
+        NSLog(@"%@", self.fetchedCities);
+
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }

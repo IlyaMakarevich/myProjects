@@ -16,7 +16,8 @@
 - (instancetype)initWithCity:(NSString*)aCity
                      country:(NSString*)aCountry
                          lat:(CLLocationDegrees)aLat
-                         lng:(CLLocationDegrees)aLng{
+                         lng:(CLLocationDegrees)aLng
+                      number:(NSNumber*)aNumber{
     self = [super init];
     
     if (self) {
@@ -24,23 +25,24 @@
         self.country = aCountry;
         self.lat = aLat;
         self.lng = aLng;
+        self.number = aNumber;
     }
     
     return self;
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dic {
-    self = [self initWithCity:dic[@"state"] country:dic[@"country"] lat:30.0 lng:31.1];
+    self = [self initWithCity:dic[@"state"] country:dic[@"country"] lat:30.0 lng:31.1 number:0];
     return self;
 }
 
 -(instancetype) init {
-    self = [self initWithCity:@"undefined" country:@"undefined" lat:0 lng:0];
+    self = [self initWithCity:@"undefined" country:@"undefined" lat:0 lng:0 number:0];
     return self;
 }
 
 -(NSString*) description {
-    return [NSString stringWithFormat:@"%@, %@ - [%f, %f]", [self city], [self country], self.lat, self.lng];
+    return [NSString stringWithFormat:@"%@: %@, %@ - [%f, %f]", [self number], [self city], [self country], self.lat, self.lng];
 }
 
 

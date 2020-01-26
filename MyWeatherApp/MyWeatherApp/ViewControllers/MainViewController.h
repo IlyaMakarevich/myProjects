@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
+
 - (IBAction)addCity:(id)sender;
 
 @end
