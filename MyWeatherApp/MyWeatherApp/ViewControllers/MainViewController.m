@@ -17,14 +17,13 @@
     NSArray* dictionaries;
 }
 
-@property (strong, nonatomic) NSMutableArray* fetchedCities;
-
 @end
 
 @implementation MainViewController
 
 
 -(void) didChooseValue:(City*) city {
+    NSLog(@"%@", _fetchedCities);
     [_fetchedCities addObject:city];
     [self saveData:city];
     [self.table reloadData];
@@ -68,6 +67,8 @@
     [entityObj setValue:city.country forKey:@"country"];
     [entityObj setValue:[NSNumber numberWithDouble:city.lat] forKey:@"lat"];
     [entityObj setValue:[NSNumber numberWithDouble:city.lng] forKey:@"lng"];
+    [entityObj setValue:[NSNumber numberWithInt:city.number] forKey:@"number"];
+
     [appDelegate saveContext];
 }
 
@@ -77,14 +78,12 @@
     context = appDelegate.persistentContainer.viewContext;
 }
 
--(NSArray <City*>*) basicFetch {
+-(void) basicFetch {
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
        context = appDelegate.persistentContainer.viewContext;
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    NSArray* fetched = [context executeFetchRequest:request error:nil];
-    [self.fetchedCities addObjectsFromArray:fetched];
-    [self printResultsFromArray:self.fetchedCities];
-    return _fetchedCities;
+    _fetchedCities = [context executeFetchRequest:request error:nil];
+    [self printResultsFromArray:_fetchedCities];
 }
 
 -(void) fetchWithSort {
@@ -160,12 +159,12 @@
 
         [context deleteObject:_fetchedCities[indexPath.row]];
         NSLog(@"%@", context);
-        NSLog(@"%@", self.fetchedCities);
+        NSLog(@"%@", _fetchedCities);
 
 
         [_fetchedCities removeObjectAtIndex:indexPath.row];
         NSLog(@"%@", context);
-        NSLog(@"%@", self.fetchedCities);
+        NSLog(@"%@", _fetchedCities);
 
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }

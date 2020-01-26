@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MainViewController: UIViewController <UITableViewDelegate, UITableViewDataSource, SearchDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (assign, nonatomic) NSMutableArray* fetchedCities;
 
 
 - (IBAction)addCity:(id)sender;
