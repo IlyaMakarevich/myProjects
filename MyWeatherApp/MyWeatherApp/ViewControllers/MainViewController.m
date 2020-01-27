@@ -21,12 +21,17 @@
 
 @implementation MainViewController
 
+-(void) viewDidLoad {
+    [super viewDidLoad];
+    self.fetchedCities = [NSMutableArray array];
+    _table.allowsMultipleSelectionDuringEditing = false;
+    [self fetchWithSort2];
+    [self updateCitesNumbers];
+}
 
 -(void) didChooseValue:(City*) city {
-    NSLog(@"%@", _fetchedCities);
-    [_fetchedCities addObject:city];
-    NSLog(@"%@", _fetchedCities);
     [self saveData:city];
+    [self fetchWithSort2];
     [self updateCitesNumbers];
     [self.table reloadData];
 }
@@ -50,13 +55,7 @@
     NSLog(@"+ tapped");
 }
 
--(void) viewDidLoad {
-    [super viewDidLoad];
-    self.fetchedCities = [NSMutableArray array];
-    _table.allowsMultipleSelectionDuringEditing = false;
-    [self fetchWithSort];
-    [self updateCitesNumbers];
-}
+
 
 #pragma mark -Core data methods-
 
@@ -87,39 +86,34 @@
     [self printResultsFromArray:_fetchedCities];
 }
 
--(void) fetchWithSort {
+-(void) fetchWithSort2 {
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
        context = appDelegate.persistentContainer.viewContext;
-    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    NSSortDescriptor* cityDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"number" ascending:YES];
-    request.sortDescriptors = @[cityDescriptor];
-   NSArray* results = [context executeFetchRequest:request error:nil];
-   [_fetchedCities setArray:results];
-   [self printResultsFromArray:_fetchedCities];
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc]
+                                              initWithFetchRequest:fetchRequest managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    NSLog(@"%@",[self.fetchedResultsController fetchedObjects] );
 }
 
--(NSArray <NSManagedObject*>*) fetchArray {
-    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-       context = appDelegate.persistentContainer.viewContext;
-    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    NSPredicate* predicate = nil;
-    request.predicate = predicate;
-    NSArray <NSManagedObject*>* cities = [context executeFetchRequest:request error:nil];
-    return cities;
-}
 
 -(void) updateCitesNumbers {
     int counter = 0;
-    NSLog(@"%@",_fetchedCities);
-    for (City* city in _fetchedCities) {
+    NSLog(@"%@",[self.fetchedResultsController fetchedObjects]);
+    for (City* city in [self.fetchedResultsController fetchedObjects]) {
         counter+=1;
         city.number = counter;
     }
     [appDelegate saveContext];
-    NSLog(@"%@",_fetchedCities);
+    NSLog(@"%@",[self.fetchedResultsController fetchedObjects]);
 }
-
-
 
 -(void) printResultsFromArray:(NSArray <City*>*) cities {
     for (City *city in cities) {
@@ -130,23 +124,25 @@
 
 #pragma mark -Tableview methods-
 
+- (void)configureCell:(UITableViewCell *)cell withObject:(City *)object {
+    cell.textLabel.text = object.city;
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSString* identifier = @"cityCell";
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
-    NSLog(@"%@",_fetchedCities);
-    
-    NSString* cityName = [[_fetchedCities valueForKey:@"city"] objectAtIndex:indexPath.row];
-    NSString* countryName = [[_fetchedCities valueForKey:@"country"] objectAtIndex:indexPath.row];
-    NSString* countryNumber = [[_fetchedCities valueForKey:@"number"] objectAtIndex:indexPath.row];
-
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@, %@", countryNumber, cityName, countryName];
-    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    City* city = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [self configureCell:cell withObject:(City*) city];
     return cell;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _fetchedCities.count;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [[self.fetchedResultsController sections] count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -167,10 +163,7 @@
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         context = appDelegate.persistentContainer.viewContext;
 
-        City* cityToDelete = [_fetchedCities objectAtIndex:indexPath.row];
-        [_fetchedCities removeObject:cityToDelete];
-       
-        NSManagedObject* object = [self fetchArray][indexPath.row];
+        NSManagedObject* object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [context deleteObject:object];
         
         [appDelegate saveContext];
