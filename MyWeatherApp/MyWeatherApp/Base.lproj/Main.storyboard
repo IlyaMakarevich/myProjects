@@ -15,13 +15,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6RF-lQ-AtS">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RRB-Vk-VR3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fgq-zs-gwt">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fgq-zs-gwt" id="wij-eX-ht4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNg-ZO-F8N">
+                                                    <rect key="frame" x="135" y="11.5" width="105" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hNg-ZO-F8N" firstAttribute="centerX" secondItem="wij-eX-ht4" secondAttribute="centerX" id="AV9-Yl-9Qc"/>
+                                                <constraint firstItem="hNg-ZO-F8N" firstAttribute="centerY" secondItem="wij-eX-ht4" secondAttribute="centerY" id="ZCo-X8-EYL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5uS-wH-mO5" firstAttribute="trailing" secondItem="RRB-Vk-VR3" secondAttribute="trailing" id="4X6-oH-1wX"/>
+                            <constraint firstItem="RRB-Vk-VR3" firstAttribute="leading" secondItem="5uS-wH-mO5" secondAttribute="leading" id="4f3-k5-kVB"/>
+                            <constraint firstItem="5uS-wH-mO5" firstAttribute="bottom" secondItem="RRB-Vk-VR3" secondAttribute="bottom" id="enZ-bK-bBF"/>
+                            <constraint firstItem="RRB-Vk-VR3" firstAttribute="top" secondItem="5uS-wH-mO5" secondAttribute="top" id="fcb-tb-8aK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5uS-wH-mO5"/>
                     </view>
                     <navigationItem key="navigationItem" id="w0F-XV-9sa"/>

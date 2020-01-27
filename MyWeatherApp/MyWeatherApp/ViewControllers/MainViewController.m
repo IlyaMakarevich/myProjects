@@ -25,27 +25,33 @@
     self.fetchedCities = [NSMutableArray array];
     _table.allowsMultipleSelectionDuringEditing = false;
     [self fetch];
+    
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(edit)];
+    self.navigationItem.leftBarButtonItem = leftBarButton;
+}
+
+- (void) edit {
+    if (self.table.isEditing) {
+        self.table.editing = NO;
+        [self fetch];
+        [self.table reloadData];
+        self.navigationItem.leftBarButtonItem.title = @"Edit";
+    } else {
+        self.table.editing = YES;
+        self.navigationItem.leftBarButtonItem.title = @"Done";
+    }
 }
 
 -(void) didChooseValue:(City*) city {
+    city.number = (int)[self.fetchedResultsController fetchedObjects].count;
     [self saveData:city];
     [self fetch];
     [self.table reloadData];
     NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
 }
 
-- (IBAction)edit:(UIBarButtonItem *)sender {
-    if (self.table.isEditing) {
-        self.table.editing = NO;
-        [self.table reloadData];
-        [self fetch];
-    } else {
-        self.table.editing = YES;
-    }
-}
 
 -(void)addCity:(id)sender {
-    
     SearchViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchViewController"];
     vc.delegate = self;
     UINavigationController *objNav = [[UINavigationController alloc] initWithRootViewController:vc];
@@ -71,12 +77,6 @@
     [appDelegate saveContext];
 }
 
-
--(void) deleteObject:(int)number {
-    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    context = appDelegate.persistentContainer.viewContext;
-}
-
 -(void) fetch {
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
        context = appDelegate.persistentContainer.viewContext;
@@ -94,24 +94,11 @@
     NSLog(@"%@",[self.fetchedResultsController fetchedObjects] );
 }
 
-
--(void) updateCitesNumbers {
-    int counter = 0;
-    NSLog(@"%@",[self.fetchedResultsController fetchedObjects]);
-    for (City* city in [self.fetchedResultsController fetchedObjects]) {
-        counter+=1;
-        city.number = counter;
-    }
-    [appDelegate saveContext];
-    NSLog(@"%@",[self.fetchedResultsController fetchedObjects]);
-}
-
 -(void) printResultsFromArray:(NSArray <City*>*) cities {
     for (City *city in cities) {
         NSLog(@"%@,%@,%f,%f", city.city,city.country,city.lat,city.lng);
     }
 }
-
 
 #pragma mark -Tableview methods-
 
@@ -145,21 +132,29 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath{
-    NSArray* array = [self.fetchedResultsController fetchedObjects];
-    City* selectedCity = [array objectAtIndex:fromIndexPath.row];
-    NSLog(@"%d", selectedCity.number);
-    selectedCity.number = (int) toIndexPath.row;
-    NSLog(@"%d", selectedCity.number);
-
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.fetchedResultsController fetchedObjects]];
+    City* movingCity = [array objectAtIndex:fromIndexPath.row];
+    NSLog(@"%d", movingCity.number);
+    [array removeObjectAtIndex:fromIndexPath.row];
+    [array insertObject:movingCity atIndex:toIndexPath.row];
+    NSLog(@"%d", movingCity.number);
+    
+    // Update the order of them all according to their index in the mutable array
+     int i = 0;
+     for (NSManagedObject *mo in array)
+     {
+         [mo setValue:[NSNumber numberWithInt:i++] forKey:@"number"];
+     }
+    [appDelegate saveContext];
  }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSArray* array = [self.fetchedResultsController fetchedObjects];
-        City* objectToDelete = 
-        
+        NSManagedObject* city = [array objectAtIndex:indexPath.row];
+        [context deleteObject:city];
         [appDelegate saveContext];
-        [self updateCitesNumbers];
+        [self fetch];
         [self.table reloadData];
     }
 }

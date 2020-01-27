@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray* fetchedCities;
 @property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 
-- (IBAction)edit:(UIBarButtonItem *)sender;
 - (IBAction)addCity:(id)sender;
 
 @end

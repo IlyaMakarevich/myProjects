@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)closeBtn:(id)sender;
 
+
+
 @property (weak, nonatomic) id <SearchDelegate> delegate;
 @property (strong, nonatomic) NSArray* cities;
 @end
