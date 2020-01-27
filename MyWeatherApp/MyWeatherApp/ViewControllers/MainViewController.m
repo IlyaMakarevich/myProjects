@@ -14,7 +14,6 @@
 @interface MainViewController() {
     AppDelegate* appDelegate;
     NSManagedObjectContext* context;
-    NSArray* dictionaries;
 }
 
 @end
@@ -25,20 +24,21 @@
     [super viewDidLoad];
     self.fetchedCities = [NSMutableArray array];
     _table.allowsMultipleSelectionDuringEditing = false;
-    [self fetchWithSort2];
-    [self updateCitesNumbers];
+    [self fetch];
 }
 
 -(void) didChooseValue:(City*) city {
     [self saveData:city];
-    [self fetchWithSort2];
-    [self updateCitesNumbers];
+    [self fetch];
     [self.table reloadData];
+    NSLog(@"%@", [self.fetchedResultsController fetchedObjects]);
 }
 
 - (IBAction)edit:(UIBarButtonItem *)sender {
     if (self.table.isEditing) {
         self.table.editing = NO;
+        [self.table reloadData];
+        [self fetch];
     } else {
         self.table.editing = YES;
     }
@@ -77,20 +77,11 @@
     context = appDelegate.persistentContainer.viewContext;
 }
 
--(void) basicFetch {
-    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-       context = appDelegate.persistentContainer.viewContext;
-    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    NSArray* results = [context executeFetchRequest:request error:nil];
-    [_fetchedCities setArray:results];
-    [self printResultsFromArray:_fetchedCities];
-}
-
--(void) fetchWithSort2 {
+-(void) fetch {
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
        context = appDelegate.persistentContainer.viewContext;
     NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CityEntity"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"number" ascending:true];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     [fetchRequest setSortDescriptors:sortDescriptors];
     self.fetchedResultsController = [[NSFetchedResultsController alloc]
@@ -125,7 +116,7 @@
 #pragma mark -Tableview methods-
 
 - (void)configureCell:(UITableViewCell *)cell withObject:(City *)object {
-    cell.textLabel.text = object.city;
+    cell.textLabel.text = [NSString stringWithFormat:@"%d - %@, %@", object.number, object.city, object.country];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -154,17 +145,18 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath{
-    
+    NSArray* array = [self.fetchedResultsController fetchedObjects];
+    City* selectedCity = [array objectAtIndex:fromIndexPath.row];
+    NSLog(@"%d", selectedCity.number);
+    selectedCity.number = (int) toIndexPath.row;
+    NSLog(@"%d", selectedCity.number);
+
  }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //add code here for when you hit delete
-        appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        context = appDelegate.persistentContainer.viewContext;
-
-        NSManagedObject* object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [context deleteObject:object];
+        NSArray* array = [self.fetchedResultsController fetchedObjects];
+        City* objectToDelete = 
         
         [appDelegate saveContext];
         [self updateCitesNumbers];

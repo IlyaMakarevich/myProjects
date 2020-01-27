@@ -32,7 +32,7 @@
 }
 
 -(instancetype)initWithDictionary:(NSDictionary *)dic {
-    self = [self initWithCity:dic[@"state"] country:dic[@"country"] lat:30.0 lng:31.1 number:0];
+    self = [self initWithCity:dic[@"state"] country:dic[@"country"] lat:30.0 lng:31.1 number:999];
     return self;
 }
 
