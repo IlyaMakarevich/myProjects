@@ -102,8 +102,13 @@
                           lat:[[[dic valueForKey:@"geometry"] objectForKey:@"lat"] doubleValue]
                           lng:[[[dic valueForKey:@"geometry"] objectForKey:@"lng"] doubleValue]
                           number: 0];
-            [tempCities addObject:city];
-            [tempCities description];
+            if ([NSNumber numberWithDouble: city.lat] != NULL &&
+                [NSNumber numberWithDouble: city.lng]!= NULL &&
+                city.city != NULL && city.country != NULL ){
+                [tempCities addObject:city];
+                           [tempCities description];
+            }
+
         }
         
         self.cities = [[NSArray alloc]initWithArray:tempCities];
