@@ -158,5 +158,13 @@
         [self.table reloadData];
     }
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.fetchedResultsController fetchedObjects]];
+    City* tappedCity = [array objectAtIndex:indexPath.row];
+
+    CityViewController * cityVC = [self.storyboard instantiateViewControllerWithIdentifier:@"cityVC"];
+    cityVC.cityInfo = [tappedCity description];
+    [self presentViewController:cityVC animated:YES completion:nil];
+}
 
 @end

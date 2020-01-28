@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CityViewController : UIViewController
 
+@property (strong, nonatomic)NSString* cityInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END
