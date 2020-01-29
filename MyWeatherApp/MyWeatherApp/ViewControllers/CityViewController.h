@@ -7,12 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "City.h"
+#import "Weather.h"
+#import "CustomTableViewCell.h"
+
+
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CityViewController : UIViewController
+@interface CityViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic)NSString* cityInfo;
+@property (strong, nonatomic) City* cityInfo;
+@property (strong, nonatomic) Weather* weather;
+@property (strong, nonatomic) IBOutlet UITableView *weatherTableView;
+
+
+
 
 @end
 

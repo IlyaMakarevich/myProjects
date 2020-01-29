@@ -19,6 +19,7 @@
 @property (assign, nonatomic)CLLocationCoordinate2D location;
 
 
+
 - (id)initWithCity:(NSString *)aCity
            country:(NSString *)aCountry
                lat:(CLLocationDegrees)aLat

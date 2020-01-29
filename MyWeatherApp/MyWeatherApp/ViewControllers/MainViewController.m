@@ -160,11 +160,22 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *array = [NSMutableArray arrayWithArray:[self.fetchedResultsController fetchedObjects]];
-    City* tappedCity = [array objectAtIndex:indexPath.row];
+    NSManagedObject* tappedCity = [array objectAtIndex:indexPath.row];
+
+    City* cityToPass = [[City alloc] init];
+    NSArray *keys = [[[tappedCity entity] attributesByName] allKeys];
+    NSDictionary *dict = [tappedCity dictionaryWithValuesForKeys:keys];
+    cityToPass.city = dict[@"city"];
+    cityToPass.country = dict[@"country"];
+    CLLocationDegrees latitude = [[dict valueForKeyPath:@"lat"] doubleValue];
+    CLLocationDegrees longitude = [[dict valueForKeyPath:@"lng"] doubleValue];
+    cityToPass.lat = latitude;
+    cityToPass.lng = longitude;
 
     CityViewController * cityVC = [self.storyboard instantiateViewControllerWithIdentifier:@"cityVC"];
-    cityVC.cityInfo = [tappedCity description];
+    cityVC.cityInfo = cityToPass;
     [self presentViewController:cityVC animated:YES completion:nil];
+    
 }
 
 @end
