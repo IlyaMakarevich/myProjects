@@ -7,22 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CurrentForecast.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Weather : NSObject
 
-
-@property (strong, nonatomic) NSString *temp;
-@property (strong, nonatomic) NSString *wind;
-@property (strong, nonatomic) NSString *summary;
+@property(strong, nonatomic) CurrentForecast *currentForecast;
+@property(strong, nonatomic) NSMutableArray *dailyForecasts;
 
 
-- (id)initWithTemp: (NSString*) temp
-                wind:(NSString*) wind
-                     summary:(NSString*) summary;
+-(id)initWithWeatherDictionary:(NSDictionary *)dictionary;
 
-- (id)initWithDictionary:(NSDictionary *)dic;
 
 
 @end

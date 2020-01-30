@@ -7,26 +7,21 @@
 //
 
 #import "Weather.h"
+#import "DailyForecast.h"
 
 @implementation Weather
 
-- (id)initWithTemp:(NSString *)temp
-              wind:(NSString *)wind
-            summary:(NSString *)summary {
+-(id)initWithWeatherDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if (self) {
-        _temp = temp;
-        _wind = wind;
-        _summary = summary;
+        _currentForecast = [[CurrentForecast alloc]initWithCurrentlyDictionary:dictionary[@"currently"]];
+        _dailyForecasts = [[NSMutableArray alloc] init];
+        for (NSDictionary *dailyDictionary in dictionary[@"daily"][@"data"]) {
+            DailyForecast *dailyWeather = [[DailyForecast alloc] initWithDailyDictionary:dailyDictionary];
+            [self.dailyForecasts addObject:dailyWeather];
+        }
     }
     return self;
-
 }
-
--(id)initWithDictionary:(NSDictionary *)dic {
-    self = [self initWithTemp:dic[@"temperature"] wind:dic[@"windSpeed"] summary:dic[@"summary"]];
-    return self;
-}
-
 
 @end

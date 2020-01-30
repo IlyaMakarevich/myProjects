@@ -1,0 +1,667 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD1212451EC0F7D200D3FE36 /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1212441EC0F7D200D3FE36 /* LocationHelper.m */; };
+		CD1212481EC107E200D3FE36 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1212471EC107E200D3FE36 /* Location.m */; };
+		CD12124B1EC12DDA00D3FE36 /* CurrentForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12124A1EC12DDA00D3FE36 /* CurrentForecast.m */; };
+		CD12124E1EC1336600D3FE36 /* DailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12124D1EC1336600D3FE36 /* DailyForecast.m */; };
+		CD1212511EC1405200D3FE36 /* HourlyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1212501EC1405200D3FE36 /* HourlyForecast.m */; };
+		CD1212541EC1457300D3FE36 /* WeatherForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1212531EC1457300D3FE36 /* WeatherForecast.m */; };
+		CD1212661EC25FBA00D3FE36 /* HourlyWeatherViewControlla.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1212651EC25FBA00D3FE36 /* HourlyWeatherViewControlla.m */; };
+		CD12126A1EC27A2A00D3FE36 /* HourlyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1212681EC27A2A00D3FE36 /* HourlyViewCell.m */; };
+		CD12126B1EC27A2A00D3FE36 /* HourlyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1212691EC27A2A00D3FE36 /* HourlyViewCell.xib */; };
+		CD12126E1EC2A15500D3FE36 /* WeekViewControlla.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12126D1EC2A15500D3FE36 /* WeekViewControlla.m */; };
+		CD1212721EC2A56000D3FE36 /* WeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1212701EC2A56000D3FE36 /* WeekViewCell.m */; };
+		CD1212731EC2A56000D3FE36 /* WeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1212711EC2A56000D3FE36 /* WeekViewCell.xib */; };
+		CD13632D1EC0E5E300AE71A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD13632C1EC0E5E300AE71A2 /* main.m */; };
+		CD1363301EC0E5E300AE71A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD13632F1EC0E5E300AE71A2 /* AppDelegate.m */; };
+		CD1363331EC0E5E300AE71A2 /* HomeViewControlla.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1363321EC0E5E300AE71A2 /* HomeViewControlla.m */; };
+		CD1363361EC0E5E300AE71A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1363341EC0E5E300AE71A2 /* Main.storyboard */; };
+		CD1363381EC0E5E300AE71A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD1363371EC0E5E300AE71A2 /* Assets.xcassets */; };
+		CD13633B1EC0E5E300AE71A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1363391EC0E5E300AE71A2 /* LaunchScreen.storyboard */; };
+		CD1363461EC0E5E300AE71A2 /* NebulousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1363451EC0E5E300AE71A2 /* NebulousTests.m */; };
+		CD1E18961EC5A64D00B41598 /* testHourlyViewControlla.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E18951EC5A64D00B41598 /* testHourlyViewControlla.m */; };
+		CD1E18981EC5A9F700B41598 /* testCurrentForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E18971EC5A9F700B41598 /* testCurrentForecast.m */; };
+		CD24EE0E1EC4CBAB0000C3D8 /* MyLocationsTableViewControlla.m in Sources */ = {isa = PBXBuildFile; fileRef = CD24EE0D1EC4CBAB0000C3D8 /* MyLocationsTableViewControlla.m */; };
+		CD24EE111EC51C5A0000C3D8 /* SearchViewControlla.m in Sources */ = {isa = PBXBuildFile; fileRef = CD24EE101EC51C5A0000C3D8 /* SearchViewControlla.m */; };
+		CD24EE131EC532750000C3D8 /* settings_small.png in Resources */ = {isa = PBXBuildFile; fileRef = CD24EE121EC532750000C3D8 /* settings_small.png */; };
+		CD5B19061EC377A8009B2B7F /* CurrentWeatherViewControlla.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5B19051EC377A8009B2B7F /* CurrentWeatherViewControlla.m */; };
+		CDE570D91EC0EAFB008A71BC /* Forecastr.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE570D41EC0EAFB008A71BC /* Forecastr.m */; };
+		CDE570DA1EC0EAFB008A71BC /* Forecastr+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE570D61EC0EAFB008A71BC /* Forecastr+CLLocation.m */; };
+		CDE570DB1EC0EAFB008A71BC /* ForecastrAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE570D81EC0EAFB008A71BC /* ForecastrAPIClient.m */; };
+		EAA8632C43A05718E81E401D /* libPods-Nebulous.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965A7CD5AA5DA9F8546552E /* libPods-Nebulous.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD1363421EC0E5E300AE71A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD1363201EC0E5E300AE71A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD1363271EC0E5E300AE71A2;
+			remoteInfo = Nebulous;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3965A7CD5AA5DA9F8546552E /* libPods-Nebulous.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nebulous.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7425632150F1E99ACF6075A0 /* Pods-Nebulous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nebulous.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nebulous/Pods-Nebulous.release.xcconfig"; sourceTree = "<group>"; };
+		9B53457CD74C0BAC1524A09C /* Pods-Nebulous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nebulous.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nebulous/Pods-Nebulous.debug.xcconfig"; sourceTree = "<group>"; };
+		CD1212431EC0F7D200D3FE36 /* LocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationHelper.h; sourceTree = "<group>"; };
+		CD1212441EC0F7D200D3FE36 /* LocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationHelper.m; sourceTree = "<group>"; };
+		CD1212461EC107E200D3FE36 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		CD1212471EC107E200D3FE36 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		CD1212491EC12DDA00D3FE36 /* CurrentForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentForecast.h; sourceTree = "<group>"; };
+		CD12124A1EC12DDA00D3FE36 /* CurrentForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentForecast.m; sourceTree = "<group>"; };
+		CD12124C1EC1336600D3FE36 /* DailyForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyForecast.h; sourceTree = "<group>"; };
+		CD12124D1EC1336600D3FE36 /* DailyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyForecast.m; sourceTree = "<group>"; };
+		CD12124F1EC1405200D3FE36 /* HourlyForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HourlyForecast.h; sourceTree = "<group>"; };
+		CD1212501EC1405200D3FE36 /* HourlyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HourlyForecast.m; sourceTree = "<group>"; };
+		CD1212521EC1457300D3FE36 /* WeatherForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherForecast.h; sourceTree = "<group>"; };
+		CD1212531EC1457300D3FE36 /* WeatherForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherForecast.m; sourceTree = "<group>"; };
+		CD1212641EC25FBA00D3FE36 /* HourlyWeatherViewControlla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HourlyWeatherViewControlla.h; sourceTree = "<group>"; };
+		CD1212651EC25FBA00D3FE36 /* HourlyWeatherViewControlla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HourlyWeatherViewControlla.m; sourceTree = "<group>"; };
+		CD1212671EC27A2A00D3FE36 /* HourlyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HourlyViewCell.h; sourceTree = "<group>"; };
+		CD1212681EC27A2A00D3FE36 /* HourlyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HourlyViewCell.m; sourceTree = "<group>"; };
+		CD1212691EC27A2A00D3FE36 /* HourlyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HourlyViewCell.xib; sourceTree = "<group>"; };
+		CD12126C1EC2A15500D3FE36 /* WeekViewControlla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewControlla.h; sourceTree = "<group>"; };
+		CD12126D1EC2A15500D3FE36 /* WeekViewControlla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewControlla.m; sourceTree = "<group>"; };
+		CD12126F1EC2A56000D3FE36 /* WeekViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekViewCell.h; sourceTree = "<group>"; };
+		CD1212701EC2A56000D3FE36 /* WeekViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekViewCell.m; sourceTree = "<group>"; };
+		CD1212711EC2A56000D3FE36 /* WeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekViewCell.xib; sourceTree = "<group>"; };
+		CD1363281EC0E5E300AE71A2 /* Nebulous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nebulous.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD13632C1EC0E5E300AE71A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CD13632E1EC0E5E300AE71A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CD13632F1EC0E5E300AE71A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CD1363311EC0E5E300AE71A2 /* HomeViewControlla.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewControlla.h; sourceTree = "<group>"; };
+		CD1363321EC0E5E300AE71A2 /* HomeViewControlla.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewControlla.m; sourceTree = "<group>"; };
+		CD1363351EC0E5E300AE71A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD1363371EC0E5E300AE71A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD13633A1EC0E5E300AE71A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD13633C1EC0E5E300AE71A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD1363411EC0E5E300AE71A2 /* NebulousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NebulousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD1363451EC0E5E300AE71A2 /* NebulousTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NebulousTests.m; sourceTree = "<group>"; };
+		CD1363471EC0E5E300AE71A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD1E18951EC5A64D00B41598 /* testHourlyViewControlla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testHourlyViewControlla.m; sourceTree = "<group>"; };
+		CD1E18971EC5A9F700B41598 /* testCurrentForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testCurrentForecast.m; sourceTree = "<group>"; };
+		CD24EE0C1EC4CBAB0000C3D8 /* MyLocationsTableViewControlla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocationsTableViewControlla.h; sourceTree = "<group>"; };
+		CD24EE0D1EC4CBAB0000C3D8 /* MyLocationsTableViewControlla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocationsTableViewControlla.m; sourceTree = "<group>"; };
+		CD24EE0F1EC51C5A0000C3D8 /* SearchViewControlla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewControlla.h; sourceTree = "<group>"; };
+		CD24EE101EC51C5A0000C3D8 /* SearchViewControlla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewControlla.m; sourceTree = "<group>"; };
+		CD24EE121EC532750000C3D8 /* settings_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_small.png; sourceTree = "<group>"; };
+		CD5B19041EC377A8009B2B7F /* CurrentWeatherViewControlla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentWeatherViewControlla.h; sourceTree = "<group>"; };
+		CD5B19051EC377A8009B2B7F /* CurrentWeatherViewControlla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentWeatherViewControlla.m; sourceTree = "<group>"; };
+		CDE570D31EC0EAFB008A71BC /* Forecastr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Forecastr.h; sourceTree = "<group>"; };
+		CDE570D41EC0EAFB008A71BC /* Forecastr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Forecastr.m; sourceTree = "<group>"; };
+		CDE570D51EC0EAFB008A71BC /* Forecastr+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Forecastr+CLLocation.h"; sourceTree = "<group>"; };
+		CDE570D61EC0EAFB008A71BC /* Forecastr+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Forecastr+CLLocation.m"; sourceTree = "<group>"; };
+		CDE570D71EC0EAFB008A71BC /* ForecastrAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastrAPIClient.h; sourceTree = "<group>"; };
+		CDE570D81EC0EAFB008A71BC /* ForecastrAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastrAPIClient.m; sourceTree = "<group>"; };
+		CDE570DD1EC0ECFA008A71BC /* apiKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = apiKey.h; path = ../../apiKey.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD1363251EC0E5E300AE71A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAA8632C43A05718E81E401D /* libPods-Nebulous.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD13633E1EC0E5E300AE71A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD13631F1EC0E5E300AE71A2 = {
+			isa = PBXGroup;
+			children = (
+				CD13632A1EC0E5E300AE71A2 /* Nebulous */,
+				CD1363441EC0E5E300AE71A2 /* NebulousTests */,
+				CD1363291EC0E5E300AE71A2 /* Products */,
+				ECCED00EA66B263AC7E62FB0 /* Pods */,
+				F1C2EEFE95EFD278F22AEF78 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD1363291EC0E5E300AE71A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD1363281EC0E5E300AE71A2 /* Nebulous.app */,
+				CD1363411EC0E5E300AE71A2 /* NebulousTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD13632A1EC0E5E300AE71A2 /* Nebulous */ = {
+			isa = PBXGroup;
+			children = (
+				CDE570DF1EC0EE89008A71BC /* model */,
+				CD13632F1EC0E5E300AE71A2 /* AppDelegate.m */,
+				CDE570DD1EC0ECFA008A71BC /* apiKey.h */,
+				CDE570DE1EC0EE7F008A71BC /* controlla */,
+				CDE570DC1EC0EB9B008A71BC /* view */,
+				CD13633C1EC0E5E300AE71A2 /* Info.plist */,
+				CD13632B1EC0E5E300AE71A2 /* Supporting Files */,
+				CDE570D21EC0EACB008A71BC /* utilities */,
+			);
+			path = Nebulous;
+			sourceTree = "<group>";
+		};
+		CD13632B1EC0E5E300AE71A2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD13632C1EC0E5E300AE71A2 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD1363441EC0E5E300AE71A2 /* NebulousTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E18971EC5A9F700B41598 /* testCurrentForecast.m */,
+				CD1E18951EC5A64D00B41598 /* testHourlyViewControlla.m */,
+				CD1363451EC0E5E300AE71A2 /* NebulousTests.m */,
+				CD1363471EC0E5E300AE71A2 /* Info.plist */,
+			);
+			path = NebulousTests;
+			sourceTree = "<group>";
+		};
+		CDE570D21EC0EACB008A71BC /* utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CDE570D31EC0EAFB008A71BC /* Forecastr.h */,
+				CDE570D41EC0EAFB008A71BC /* Forecastr.m */,
+				CDE570D51EC0EAFB008A71BC /* Forecastr+CLLocation.h */,
+				CDE570D61EC0EAFB008A71BC /* Forecastr+CLLocation.m */,
+				CDE570D71EC0EAFB008A71BC /* ForecastrAPIClient.h */,
+				CDE570D81EC0EAFB008A71BC /* ForecastrAPIClient.m */,
+			);
+			name = utilities;
+			sourceTree = "<group>";
+		};
+		CDE570DC1EC0EB9B008A71BC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				CD1212671EC27A2A00D3FE36 /* HourlyViewCell.h */,
+				CD1212681EC27A2A00D3FE36 /* HourlyViewCell.m */,
+				CD1212691EC27A2A00D3FE36 /* HourlyViewCell.xib */,
+				CD1363341EC0E5E300AE71A2 /* Main.storyboard */,
+				CD1363371EC0E5E300AE71A2 /* Assets.xcassets */,
+				CD24EE121EC532750000C3D8 /* settings_small.png */,
+				CD1363391EC0E5E300AE71A2 /* LaunchScreen.storyboard */,
+				CD12126F1EC2A56000D3FE36 /* WeekViewCell.h */,
+				CD1212701EC2A56000D3FE36 /* WeekViewCell.m */,
+				CD1212711EC2A56000D3FE36 /* WeekViewCell.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		CDE570DE1EC0EE7F008A71BC /* controlla */ = {
+			isa = PBXGroup;
+			children = (
+				CD24EE0F1EC51C5A0000C3D8 /* SearchViewControlla.h */,
+				CD24EE101EC51C5A0000C3D8 /* SearchViewControlla.m */,
+				CD24EE0C1EC4CBAB0000C3D8 /* MyLocationsTableViewControlla.h */,
+				CD24EE0D1EC4CBAB0000C3D8 /* MyLocationsTableViewControlla.m */,
+				CD13632E1EC0E5E300AE71A2 /* AppDelegate.h */,
+				CD1212641EC25FBA00D3FE36 /* HourlyWeatherViewControlla.h */,
+				CD1212651EC25FBA00D3FE36 /* HourlyWeatherViewControlla.m */,
+				CD5B19041EC377A8009B2B7F /* CurrentWeatherViewControlla.h */,
+				CD5B19051EC377A8009B2B7F /* CurrentWeatherViewControlla.m */,
+				CD1363311EC0E5E300AE71A2 /* HomeViewControlla.h */,
+				CD1363321EC0E5E300AE71A2 /* HomeViewControlla.m */,
+				CD12126C1EC2A15500D3FE36 /* WeekViewControlla.h */,
+				CD12126D1EC2A15500D3FE36 /* WeekViewControlla.m */,
+			);
+			name = controlla;
+			sourceTree = "<group>";
+		};
+		CDE570DF1EC0EE89008A71BC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				CD1212431EC0F7D200D3FE36 /* LocationHelper.h */,
+				CD1212441EC0F7D200D3FE36 /* LocationHelper.m */,
+				CD1212461EC107E200D3FE36 /* Location.h */,
+				CD1212471EC107E200D3FE36 /* Location.m */,
+				CD1212491EC12DDA00D3FE36 /* CurrentForecast.h */,
+				CD12124A1EC12DDA00D3FE36 /* CurrentForecast.m */,
+				CD12124C1EC1336600D3FE36 /* DailyForecast.h */,
+				CD12124D1EC1336600D3FE36 /* DailyForecast.m */,
+				CD12124F1EC1405200D3FE36 /* HourlyForecast.h */,
+				CD1212501EC1405200D3FE36 /* HourlyForecast.m */,
+				CD1212521EC1457300D3FE36 /* WeatherForecast.h */,
+				CD1212531EC1457300D3FE36 /* WeatherForecast.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		ECCED00EA66B263AC7E62FB0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9B53457CD74C0BAC1524A09C /* Pods-Nebulous.debug.xcconfig */,
+				7425632150F1E99ACF6075A0 /* Pods-Nebulous.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F1C2EEFE95EFD278F22AEF78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3965A7CD5AA5DA9F8546552E /* libPods-Nebulous.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD1363271EC0E5E300AE71A2 /* Nebulous */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD13634A1EC0E5E300AE71A2 /* Build configuration list for PBXNativeTarget "Nebulous" */;
+			buildPhases = (
+				2D04BA1D22F9AB2692621976 /* [CP] Check Pods Manifest.lock */,
+				CD1363241EC0E5E300AE71A2 /* Sources */,
+				CD1363251EC0E5E300AE71A2 /* Frameworks */,
+				CD1363261EC0E5E300AE71A2 /* Resources */,
+				D52A3192E250D76B3A2E8176 /* [CP] Embed Pods Frameworks */,
+				436A36E891CCD783D1A6EB97 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nebulous;
+			productName = Nebulous;
+			productReference = CD1363281EC0E5E300AE71A2 /* Nebulous.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD1363401EC0E5E300AE71A2 /* NebulousTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD13634D1EC0E5E300AE71A2 /* Build configuration list for PBXNativeTarget "NebulousTests" */;
+			buildPhases = (
+				CD13633D1EC0E5E300AE71A2 /* Sources */,
+				CD13633E1EC0E5E300AE71A2 /* Frameworks */,
+				CD13633F1EC0E5E300AE71A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD1363431EC0E5E300AE71A2 /* PBXTargetDependency */,
+			);
+			name = NebulousTests;
+			productName = NebulousTests;
+			productReference = CD1363411EC0E5E300AE71A2 /* NebulousTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD1363201EC0E5E300AE71A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Elyanil Liranzo Castro";
+				TargetAttributes = {
+					CD1363271EC0E5E300AE71A2 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 6EJN6WTQBM;
+						ProvisioningStyle = Automatic;
+					};
+					CD1363401EC0E5E300AE71A2 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 6EJN6WTQBM;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CD1363271EC0E5E300AE71A2;
+					};
+				};
+			};
+			buildConfigurationList = CD1363231EC0E5E300AE71A2 /* Build configuration list for PBXProject "Nebulous" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = CD13631F1EC0E5E300AE71A2;
+			productRefGroup = CD1363291EC0E5E300AE71A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD1363271EC0E5E300AE71A2 /* Nebulous */,
+				CD1363401EC0E5E300AE71A2 /* NebulousTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD1363261EC0E5E300AE71A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD13633B1EC0E5E300AE71A2 /* LaunchScreen.storyboard in Resources */,
+				CD1212731EC2A56000D3FE36 /* WeekViewCell.xib in Resources */,
+				CD24EE131EC532750000C3D8 /* settings_small.png in Resources */,
+				CD12126B1EC27A2A00D3FE36 /* HourlyViewCell.xib in Resources */,
+				CD1363381EC0E5E300AE71A2 /* Assets.xcassets in Resources */,
+				CD1363361EC0E5E300AE71A2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD13633F1EC0E5E300AE71A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D04BA1D22F9AB2692621976 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		436A36E891CCD783D1A6EB97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nebulous/Pods-Nebulous-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D52A3192E250D76B3A2E8176 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nebulous/Pods-Nebulous-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD1363241EC0E5E300AE71A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD1212721EC2A56000D3FE36 /* WeekViewCell.m in Sources */,
+				CD12126E1EC2A15500D3FE36 /* WeekViewControlla.m in Sources */,
+				CD12124E1EC1336600D3FE36 /* DailyForecast.m in Sources */,
+				CDE570DA1EC0EAFB008A71BC /* Forecastr+CLLocation.m in Sources */,
+				CD1363331EC0E5E300AE71A2 /* HomeViewControlla.m in Sources */,
+				CD24EE0E1EC4CBAB0000C3D8 /* MyLocationsTableViewControlla.m in Sources */,
+				CD12126A1EC27A2A00D3FE36 /* HourlyViewCell.m in Sources */,
+				CD1363301EC0E5E300AE71A2 /* AppDelegate.m in Sources */,
+				CD24EE111EC51C5A0000C3D8 /* SearchViewControlla.m in Sources */,
+				CD13632D1EC0E5E300AE71A2 /* main.m in Sources */,
+				CDE570D91EC0EAFB008A71BC /* Forecastr.m in Sources */,
+				CD5B19061EC377A8009B2B7F /* CurrentWeatherViewControlla.m in Sources */,
+				CD12124B1EC12DDA00D3FE36 /* CurrentForecast.m in Sources */,
+				CD1212451EC0F7D200D3FE36 /* LocationHelper.m in Sources */,
+				CD1212481EC107E200D3FE36 /* Location.m in Sources */,
+				CDE570DB1EC0EAFB008A71BC /* ForecastrAPIClient.m in Sources */,
+				CD1212661EC25FBA00D3FE36 /* HourlyWeatherViewControlla.m in Sources */,
+				CD1212511EC1405200D3FE36 /* HourlyForecast.m in Sources */,
+				CD1212541EC1457300D3FE36 /* WeatherForecast.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD13633D1EC0E5E300AE71A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD1E18961EC5A64D00B41598 /* testHourlyViewControlla.m in Sources */,
+				CD1363461EC0E5E300AE71A2 /* NebulousTests.m in Sources */,
+				CD1E18981EC5A9F700B41598 /* testCurrentForecast.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD1363431EC0E5E300AE71A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD1363271EC0E5E300AE71A2 /* Nebulous */;
+			targetProxy = CD1363421EC0E5E300AE71A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD1363341EC0E5E300AE71A2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD1363351EC0E5E300AE71A2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD1363391EC0E5E300AE71A2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD13633A1EC0E5E300AE71A2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD1363481EC0E5E300AE71A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD1363491EC0E5E300AE71A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD13634B1EC0E5E300AE71A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B53457CD74C0BAC1524A09C /* Pods-Nebulous.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6EJN6WTQBM;
+				INFOPLIST_FILE = Nebulous/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elyaniliranzocastro.Nebulous;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD13634C1EC0E5E300AE71A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7425632150F1E99ACF6075A0 /* Pods-Nebulous.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6EJN6WTQBM;
+				INFOPLIST_FILE = Nebulous/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elyaniliranzocastro.Nebulous;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CD13634E1EC0E5E300AE71A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6EJN6WTQBM;
+				INFOPLIST_FILE = NebulousTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elyaniliranzocastro.NebulousTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nebulous.app/Nebulous";
+			};
+			name = Debug;
+		};
+		CD13634F1EC0E5E300AE71A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6EJN6WTQBM;
+				INFOPLIST_FILE = NebulousTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.elyaniliranzocastro.NebulousTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nebulous.app/Nebulous";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD1363231EC0E5E300AE71A2 /* Build configuration list for PBXProject "Nebulous" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD1363481EC0E5E300AE71A2 /* Debug */,
+				CD1363491EC0E5E300AE71A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD13634A1EC0E5E300AE71A2 /* Build configuration list for PBXNativeTarget "Nebulous" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD13634B1EC0E5E300AE71A2 /* Debug */,
+				CD13634C1EC0E5E300AE71A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD13634D1EC0E5E300AE71A2 /* Build configuration list for PBXNativeTarget "NebulousTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD13634E1EC0E5E300AE71A2 /* Debug */,
+				CD13634F1EC0E5E300AE71A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD1363201EC0E5E300AE71A2 /* Project object */;
+}

@@ -23,26 +23,39 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200;
+    return UITableViewAutomaticDimension;
 }
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    static NSString *simpleTableIdentifier = @"cell1";
-    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    if (cell == nil) {
-       cell = [[CustomTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier] ;
+    static NSString *nowCellIdentifier = @"nowCell";
+    CustomTableViewCell *nowCell = [tableView dequeueReusableCellWithIdentifier:nowCellIdentifier];
+    if (nowCell == nil) {
+       nowCell = [[CustomTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nowCellIdentifier] ;
      }
     NSString* locationCity = _cityInfo.city;
 //    NSString* locationCountry = _cityInfo.country;
 //    NSString *lat = [[NSString alloc] initWithFormat:@"%f", _cityInfo.lat];
 //    NSString *lng = [[NSString alloc] initWithFormat:@"%f", _cityInfo.lng];
 
-    NSLog(@"%@ %@ %@", _weather.summary, _weather.temp, _weather.wind);
-    cell.locationLabel.text = locationCity;
-    cell.tempLabel.text = [NSString stringWithFormat:@"%@ ℃", _weather.temp];
-    cell.conditionsLabel.text = _weather.summary;
-    return cell;
+    NSLog(@"%@ %@ %@", _weather.currentForecast.summary, _weather.currentForecast.temperatureCelsius, _weather.currentForecast.windSpeed);
+
+    if (_weather.currentForecast.temperature == NULL) {
+        nowCell.locationLabel.text = locationCity;
+        nowCell.tempLabel.text = @"";
+        nowCell.conditionsLabel.text = @"";
+    } else {
+        [UIView animateWithDuration:1.0
+        animations:^{
+            nowCell.tempLabel.alpha = 0.0f;
+            nowCell.conditionsLabel.alpha = 0.0f;
+            nowCell.tempLabel.text = [NSString stringWithFormat:@"%@ ℃", self.weather.currentForecast.temperatureCelsius];
+            nowCell.conditionsLabel.text = self.weather.currentForecast.summary;
+            nowCell.tempLabel.alpha = 1.0f;
+            nowCell.conditionsLabel.alpha = 1.0f;
+        }];
+    }
+    return nowCell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -65,14 +78,7 @@
         parameters: nil
         progress:nil success:^(NSURLSessionDataTask * task, id responseObject) {
         NSDictionary* responseDict = responseObject;
-        NSLog(@"JSON: %@",responseDict[@"currently"]);
-        self.weather = [[Weather alloc]initWithTemp:
-                        [[responseDict valueForKey:@"currently"] objectForKey:@"temperature"]
-                        wind:[[responseDict valueForKey:@"currently"] objectForKey:@"windSpeed"]
-                                             summary:[[responseDict valueForKey:@"currently"] objectForKey:@"summary"]];
-        double tempF = [self.weather.temp doubleValue];
-        double tempC = (tempF - 32) / 1.8;
-        self.weather.temp = [NSString stringWithFormat:@"%.1f", tempC];
+        self.weather = [[Weather alloc] initWithWeatherDictionary:responseDict];
         NSLog(@"%@", [self.weather description]);
         [self.weatherTableView reloadData];
 

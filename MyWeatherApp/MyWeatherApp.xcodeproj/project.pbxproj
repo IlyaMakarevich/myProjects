@@ -22,6 +22,10 @@
 		A45D4CD223D4EE960078C42A /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = A45D4CD123D4EE960078C42A /* City.m */; };
 		A4D4673823E1C09F00B4F5AD /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4673723E1C09F00B4F5AD /* Weather.m */; };
 		A4D4673B23E1D99D00B4F5AD /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4673A23E1D99D00B4F5AD /* CustomTableViewCell.m */; };
+		A4D4673E23E2CB2300B4F5AD /* DailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4673D23E2CB2300B4F5AD /* DailyForecast.m */; };
+		A4D4674123E2CE3F00B4F5AD /* CurrentForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4674023E2CE3F00B4F5AD /* CurrentForecast.m */; };
+		A4D4675023E2D68D00B4F5AD /* WeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4674E23E2D68D00B4F5AD /* WeekViewCell.m */; };
+		A4D4675123E2D68D00B4F5AD /* WeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D4674F23E2D68D00B4F5AD /* WeekViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,13 @@
 		A4D4673723E1C09F00B4F5AD /* Weather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		A4D4673923E1D99D00B4F5AD /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		A4D4673A23E1D99D00B4F5AD /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		A4D4673C23E2CB2300B4F5AD /* DailyForecast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DailyForecast.h; sourceTree = "<group>"; };
+		A4D4673D23E2CB2300B4F5AD /* DailyForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DailyForecast.m; sourceTree = "<group>"; };
+		A4D4673F23E2CE3F00B4F5AD /* CurrentForecast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentForecast.h; sourceTree = "<group>"; };
+		A4D4674023E2CE3F00B4F5AD /* CurrentForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentForecast.m; sourceTree = "<group>"; };
+		A4D4674D23E2D68D00B4F5AD /* WeekViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeekViewCell.h; sourceTree = "<group>"; };
+		A4D4674E23E2D68D00B4F5AD /* WeekViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeekViewCell.m; sourceTree = "<group>"; };
+		A4D4674F23E2D68D00B4F5AD /* WeekViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +102,9 @@
 				A434B6C523D389C400085889 /* ViewControllers */,
 				A45D4CC123D46F180078C42A /* Constants */,
 				A45D4CD323D4EE9B0078C42A /* Models */,
-				A434B6A623D3864200085889 /* AppDelegate.h */,
+				A4D4675223E2D69200B4F5AD /* View */,
 				A434B6A723D3864200085889 /* AppDelegate.m */,
+				A434B6A623D3864200085889 /* AppDelegate.h */,
 				A45D4CC923D47F020078C42A /* APIManager.m */,
 				A434B6A923D3864200085889 /* SceneDelegate.h */,
 				A434B6AA23D3864200085889 /* SceneDelegate.m */,
@@ -136,8 +148,22 @@
 				A45D4CD123D4EE960078C42A /* City.m */,
 				A4D4673623E1C09F00B4F5AD /* Weather.h */,
 				A4D4673723E1C09F00B4F5AD /* Weather.m */,
+				A4D4673C23E2CB2300B4F5AD /* DailyForecast.h */,
+				A4D4673D23E2CB2300B4F5AD /* DailyForecast.m */,
+				A4D4673F23E2CE3F00B4F5AD /* CurrentForecast.h */,
+				A4D4674023E2CE3F00B4F5AD /* CurrentForecast.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A4D4675223E2D69200B4F5AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4D4674D23E2D68D00B4F5AD /* WeekViewCell.h */,
+				A4D4674E23E2D68D00B4F5AD /* WeekViewCell.m */,
+				A4D4674F23E2D68D00B4F5AD /* WeekViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D7D67D0EF85880EE9E2714C2 /* Frameworks */ = {
@@ -216,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4D4675123E2D68D00B4F5AD /* WeekViewCell.xib in Resources */,
 				A434B6B923D3864500085889 /* LaunchScreen.storyboard in Resources */,
 				A434B6B623D3864500085889 /* Assets.xcassets in Resources */,
 				A434B6B123D3864200085889 /* Main.storyboard in Resources */,
@@ -272,9 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A434B6BC23D3864500085889 /* main.m in Sources */,
+				A4D4674123E2CE3F00B4F5AD /* CurrentForecast.m in Sources */,
 				A434B6B423D3864200085889 /* MyWeatherApp.xcdatamodeld in Sources */,
 				A434B6A823D3864200085889 /* AppDelegate.m in Sources */,
 				A45D4CC823D4718A0078C42A /* CityViewController.m in Sources */,
+				A4D4673E23E2CB2300B4F5AD /* DailyForecast.m in Sources */,
+				A4D4675023E2D68D00B4F5AD /* WeekViewCell.m in Sources */,
 				A4D4673823E1C09F00B4F5AD /* Weather.m in Sources */,
 				A4D4673B23E1D99D00B4F5AD /* CustomTableViewCell.m in Sources */,
 				A45D4CCA23D47F020078C42A /* APIManager.m in Sources */,
