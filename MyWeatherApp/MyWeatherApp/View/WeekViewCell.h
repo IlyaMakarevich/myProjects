@@ -13,6 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WeekViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *summary;
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxTempLabel;
+@property (strong, nonatomic) IBOutlet UILabel *humidityLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dewPointLabel;
+@property (strong, nonatomic) IBOutlet UILabel *visibilityLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pressureLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sunriseLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sunsetLabel;
+
 
 @end
 

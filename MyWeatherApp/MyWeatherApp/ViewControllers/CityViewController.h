@@ -10,6 +10,7 @@
 #import "City.h"
 #import "Weather.h"
 #import "CustomTableViewCell.h"
+#import "WeekViewCell.h"
 
 
 
@@ -19,9 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) City* cityInfo;
 @property (strong, nonatomic) Weather* weather;
+@property(strong, nonatomic) NSArray *dailyWeather;
 @property (strong, nonatomic) IBOutlet UITableView *weatherTableView;
 
 
+@property (strong, nonatomic) IBOutlet WeekViewCell *weekCell;
 
 
 @end
