@@ -1,14 +1,14 @@
 //
-//  DailyForecast.m
+//  WeekForecast.m
 //  MyWeatherApp
 //
 //  Created by Ilya Makarevich on 1/30/20.
 //  Copyright © 2020 MacBook Pro . All rights reserved.
 //
 
-#import "DailyForecast.h"
+#import "WeekForecast.h"
 
-@implementation DailyForecast
+@implementation WeekForecast
 
 
 -(id)initWithDailyDictionary:(NSDictionary *)dictionary{
@@ -17,10 +17,10 @@
         _temperatureMax = [self temperatureFormatter:dictionary[@"apparentTemperatureMax"]];
         _temperatureMin = [self temperatureFormatter:dictionary[@"apparentTemperatureMin"]];
         _pressure = dictionary[@"pressure"];
-        _dewPoint = dictionary[@"dewPoint"];
+        _dewPoint = [self dewPointFormatter:dictionary[@"dewPoint"]];
         _visibility = dictionary[@"visibility"];
         _windBearing = dictionary[@"windBearing"];
-        _humidity = dictionary[@"humidity"];
+        _humidity = [self humidityFormatter:dictionary[@"humidity"]];
         _summary = dictionary[@"summary"];
         _time = dictionary[@"time"];
         _temperatureCelsiusMax = [self fahrenheitToCelsius:dictionary[@"apparentTemperatureMax"]];
@@ -32,11 +32,17 @@
 }
 
 -(NSString *)fahrenheitToCelsius:(NSString *)temperature{
-
     return [[NSString alloc] initWithFormat:@"%.01f",(([temperature doubleValue] - 32) * 5 / 9)];
 }
 -(NSString *)temperatureFormatter:(NSString *)temperature{
     return [[NSString alloc] initWithFormat:@"%.0f", [temperature doubleValue]];
+}
+-(NSString *)humidityFormatter:(NSString *)humidity{
+    return [[NSString alloc] initWithFormat:@"%.0f", [humidity doubleValue] * 100];
+}
+
+-(NSString *)dewPointFormatter:(NSString *)dewPoint{
+    return [[NSString alloc] initWithFormat:@"%.0f", [dewPoint doubleValue]];
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  DailyForecast.h
+//  WeekForecast.h
 //  MyWeatherApp
 //
 //  Created by Ilya Makarevich on 1/30/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DailyForecast : NSObject
+@interface WeekForecast : NSObject
 
 @property(strong, nonatomic) NSString *temperatureMax;
 @property(strong, nonatomic) NSString *temperatureMin;

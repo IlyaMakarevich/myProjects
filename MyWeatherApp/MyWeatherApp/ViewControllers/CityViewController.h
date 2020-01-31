@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSArray *dailyWeather;
 @property (strong, nonatomic) IBOutlet UITableView *weatherTableView;
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (strong, nonatomic) IBOutlet WeekViewCell *weekCell;
 

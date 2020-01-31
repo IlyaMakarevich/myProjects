@@ -12,7 +12,7 @@
 #import "Constants.h"
 #import "AFNetworking.h"
 #import "Weather.h"
-#import "DailyForecast.h"
+#import "WeekForecast.h"
 
 @interface CityViewController ()
 @end
@@ -21,8 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _weatherTableView.bounces = NO;
-    [self.view bringSubviewToFront:self.weatherTableView];
+    self.activityIndicator.hidden = false;
+    self.weatherTableView.hidden = true;
+    [_activityIndicator startAnimating];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self searchWeather];
 }
 
@@ -33,14 +38,14 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *nowCellIdentifier = @"nowCell";
-     static NSString *dailyCellIdentifier = @"dailyCell";
+    static NSString *dailyCellIdentifier = @"dailyCell";
 
-
-    if (indexPath.row == 0) {
+    
+    if (indexPath.row == 0 && indexPath.section == 0) {
         CustomTableViewCell *nowCell = [tableView dequeueReusableCellWithIdentifier:nowCellIdentifier];
         if (nowCell == nil) {
-           nowCell = [[CustomTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nowCellIdentifier] ;
-         }
+            nowCell = [[CustomTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nowCellIdentifier] ;
+        }
         NSString* locationCity = _cityInfo.city;
         NSLog(@"%@ %@ %@", _weather.currentForecast.summary, _weather.currentForecast.temperatureCelsius, _weather.currentForecast.windSpeed);
 
@@ -50,7 +55,7 @@
             nowCell.conditionsLabel.text = @"";
         } else {
             [UIView animateWithDuration:1.0
-            animations:^{
+                             animations:^{
                 nowCell.tempLabel.alpha = 0.0f;
                 nowCell.conditionsLabel.alpha = 0.0f;
                 nowCell.tempLabel.text = [NSString stringWithFormat:@"%@ ℃", self.weather.currentForecast.temperatureCelsius];
@@ -62,44 +67,65 @@
         return nowCell;
     }
 
-        else {
+    else {
         WeekViewCell *dailyCell = [tableView dequeueReusableCellWithIdentifier:dailyCellIdentifier];
         if (dailyCell == nil) {
             [[NSBundle mainBundle] loadNibNamed:@"WeekViewCell" owner:self options:nil];
             dailyCell = _weekCell;
             _weekCell = nil;
         }
-        DailyForecast *daily = [_weather.dailyForecasts objectAtIndex:indexPath.row];
+        WeekForecast *daily = [_weather.dailyForecasts objectAtIndex:indexPath.row];
+
+        if (!daily) {
+            return dailyCell;
+        }
         [[dailyCell summary] setText:[daily summary]];
         [[dailyCell dayLabel] setText:[self unixTimeStampToDate:[daily time]]];
         [[dailyCell minTempLabel] setText:[[NSString alloc] initWithFormat:@"Min: %@˚C",daily.temperatureCelsiusMin]];
         [[dailyCell maxTempLabel] setText:[[NSString alloc] initWithFormat:@"Max: %@˚C",daily.temperatureCelsiusMax]];
-        [[dailyCell humidityLabel] setText:[[NSString alloc] initWithFormat:@"Humidity: %@",daily.humidity]];
-        [[dailyCell dewPointLabel] setText:[[NSString alloc] initWithFormat:@"Dew point: %@",daily.dewPoint ]];
+        [[dailyCell humidityLabel] setText:[[NSString alloc] initWithFormat:@"Humidity: %@%%",daily.humidity]];
+        [[dailyCell dewPointLabel] setText:[[NSString alloc] initWithFormat:@"Dew point: %@ F",daily.dewPoint ]];
         [[dailyCell visibilityLabel] setText:[[NSString alloc] initWithFormat:@"Visibility %@ km",daily.visibility]];
         [[dailyCell pressureLabel] setText:[[NSString alloc] initWithFormat:@"Pressure %@mb",daily.pressure]];
         [[dailyCell sunriseLabel] setText:[[NSString alloc] initWithFormat:@"Sunrise at %@",[self unixTimeStampToHHMMDate:daily.sunrise]]];
         [[dailyCell sunsetLabel] setText:[[NSString alloc] initWithFormat:@"Sunrise at %@",[self unixTimeStampToHHMMDate:daily.sunset]]];
         return dailyCell;
     }
-    }
+}
 
 
 
 //@property (strong, nonatomic) IBOutlet UILabel *sunriseLabel;
 //@property (strong, nonatomic) IBOutlet UILabel *sunsetLabel;
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section)
+    {    case 0: return 1;
+            break;
+        case 1: return 7;
+            break;
+        default:
+            return 0;
+            break;
+    }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
 }
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-        return @"Today weather";
+    switch (section)
+    {    case 0: return @"Today";
+            break;
+        case 1: return @"Week";
+            break;
+        default:
+            return nil;
+            break;
+    }
 }
 
 
@@ -111,13 +137,17 @@
 
     AFHTTPSessionManager* manager = [AFHTTPSessionManager manager];
     [manager GET: URL
-        parameters: nil
+      parameters: nil
         progress:nil success:^(NSURLSessionDataTask * task, id responseObject) {
         NSDictionary* responseDict = responseObject;
         self.weather = [[Weather alloc] initWithWeatherDictionary:responseDict];
         NSLog(@"%@", [self.weather description]);
         NSLog(@"%@", [self.weather.dailyForecasts description]);
+        self.activityIndicator.hidden = true;
+        self.weatherTableView.hidden = false;
+        [self.activityIndicator stopAnimating];
         [self.weatherTableView reloadData];
+
 
 
     } failure:^(NSURLSessionTask *operation, NSError *error) {

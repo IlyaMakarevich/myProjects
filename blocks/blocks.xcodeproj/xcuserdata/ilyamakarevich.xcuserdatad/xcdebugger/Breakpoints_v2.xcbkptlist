@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "EFAD5E18-C466-4EC4-A2A5-DBAFF06201F9"
+   uuid = "292E0F91-59A0-4CAB-B722-8D26708D9C70"
    type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5D2438DA-AEBA-43C5-9BD3-C9C918BBC280"
+            uuid = "146CA988-C5FB-41A7-9B45-912C97B16373"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "blocks/ViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-testBlocksMethod:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

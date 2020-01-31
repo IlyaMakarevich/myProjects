@@ -7,7 +7,7 @@
 //
 
 #import "Weather.h"
-#import "DailyForecast.h"
+#import "WeekForecast.h"
 
 @implementation Weather
 
@@ -17,7 +17,7 @@
         _currentForecast = [[CurrentForecast alloc]initWithCurrentlyDictionary:dictionary[@"currently"]];
         _dailyForecasts = [[NSMutableArray alloc] init];
         for (NSDictionary *dailyDictionary in dictionary[@"daily"][@"data"]) {
-            DailyForecast *dailyWeather = [[DailyForecast alloc] initWithDailyDictionary:dailyDictionary];
+            WeekForecast *dailyWeather = [[WeekForecast alloc] initWithDailyDictionary:dailyDictionary];
             [self.dailyForecasts addObject:dailyWeather];
         }
     }

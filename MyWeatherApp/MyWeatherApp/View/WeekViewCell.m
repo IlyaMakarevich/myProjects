@@ -7,7 +7,7 @@
 //
 
 #import "WeekViewCell.h"
-#import "DailyForecast.h"
+#import "WeekForecast.h"
 
 @implementation WeekViewCell
 
