@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeekForecast.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *sunriseLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sunsetLabel;
 
+
+-(void) configureForWeekForecast:(WeekForecast *)weekForecast;
 
 @end
 

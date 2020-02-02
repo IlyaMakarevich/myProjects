@@ -7,15 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CurrentForecast.h"
+#import "City.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CustomTableViewCell : UITableViewCell
+@interface TodayViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *tempLabel;
 @property (strong, nonatomic) IBOutlet UILabel *conditionsLabel;
 
+-(void) configureForTodayForecast:(CurrentForecast*) currentForecast location: (City*) location;
 
 @end
 

@@ -21,7 +21,7 @@
 		A45D4CCA23D47F020078C42A /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A45D4CC923D47F020078C42A /* APIManager.m */; };
 		A45D4CD223D4EE960078C42A /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = A45D4CD123D4EE960078C42A /* City.m */; };
 		A4D4673823E1C09F00B4F5AD /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4673723E1C09F00B4F5AD /* Weather.m */; };
-		A4D4673B23E1D99D00B4F5AD /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4673A23E1D99D00B4F5AD /* CustomTableViewCell.m */; };
+		A4D4673B23E1D99D00B4F5AD /* TodayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4673A23E1D99D00B4F5AD /* TodayViewCell.m */; };
 		A4D4673E23E2CB2300B4F5AD /* WeekForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4673D23E2CB2300B4F5AD /* WeekForecast.m */; };
 		A4D4674123E2CE3F00B4F5AD /* CurrentForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4674023E2CE3F00B4F5AD /* CurrentForecast.m */; };
 		A4D4675023E2D68D00B4F5AD /* WeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D4674E23E2D68D00B4F5AD /* WeekViewCell.m */; };
@@ -68,8 +68,8 @@
 		A492D0A423E4150200A7C5D4 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4D4673623E1C09F00B4F5AD /* Weather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
 		A4D4673723E1C09F00B4F5AD /* Weather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
-		A4D4673923E1D99D00B4F5AD /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
-		A4D4673A23E1D99D00B4F5AD /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		A4D4673923E1D99D00B4F5AD /* TodayViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewCell.h; sourceTree = "<group>"; };
+		A4D4673A23E1D99D00B4F5AD /* TodayViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewCell.m; sourceTree = "<group>"; };
 		A4D4673C23E2CB2300B4F5AD /* WeekForecast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeekForecast.h; sourceTree = "<group>"; };
 		A4D4673D23E2CB2300B4F5AD /* WeekForecast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeekForecast.m; sourceTree = "<group>"; };
 		A4D4673F23E2CE3F00B4F5AD /* CurrentForecast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentForecast.h; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				A434B6C523D389C400085889 /* ViewControllers */,
 				A45D4CC123D46F180078C42A /* Constants */,
 				A45D4CD323D4EE9B0078C42A /* Models */,
-				A4D4675223E2D69200B4F5AD /* View */,
+				A4D4675223E2D69200B4F5AD /* Cell */,
 				A434B6A723D3864200085889 /* AppDelegate.m */,
 				A434B6A623D3864200085889 /* AppDelegate.h */,
 				A45D4CC923D47F020078C42A /* APIManager.m */,
@@ -140,8 +140,6 @@
 				A45D4CC423D4717B0078C42A /* SearchViewController.m */,
 				A45D4CC623D4718A0078C42A /* CityViewController.h */,
 				A45D4CC723D4718A0078C42A /* CityViewController.m */,
-				A4D4673923E1D99D00B4F5AD /* CustomTableViewCell.h */,
-				A4D4673A23E1D99D00B4F5AD /* CustomTableViewCell.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -169,14 +167,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A4D4675223E2D69200B4F5AD /* View */ = {
+		A4D4675223E2D69200B4F5AD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				A4D4673923E1D99D00B4F5AD /* TodayViewCell.h */,
+				A4D4673A23E1D99D00B4F5AD /* TodayViewCell.m */,
 				A4D4674D23E2D68D00B4F5AD /* WeekViewCell.h */,
 				A4D4674E23E2D68D00B4F5AD /* WeekViewCell.m */,
 				A4D4674F23E2D68D00B4F5AD /* WeekViewCell.xib */,
 			);
-			path = View;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D7D67D0EF85880EE9E2714C2 /* Frameworks */ = {
@@ -321,7 +321,7 @@
 				A4D4673E23E2CB2300B4F5AD /* WeekForecast.m in Sources */,
 				A4D4675023E2D68D00B4F5AD /* WeekViewCell.m in Sources */,
 				A4D4673823E1C09F00B4F5AD /* Weather.m in Sources */,
-				A4D4673B23E1D99D00B4F5AD /* CustomTableViewCell.m in Sources */,
+				A4D4673B23E1D99D00B4F5AD /* TodayViewCell.m in Sources */,
 				A45D4CCA23D47F020078C42A /* APIManager.m in Sources */,
 				A434B6C423D388AF00085889 /* MainViewController.m in Sources */,
 				A45D4CC523D4717B0078C42A /* SearchViewController.m in Sources */,
