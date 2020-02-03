@@ -18,7 +18,7 @@
         _temperatureMin = [self temperatureFormatter:dictionary[@"apparentTemperatureMin"]];
         _pressure = dictionary[@"pressure"];
         _dewPoint = [self dewPointFormatter:dictionary[@"dewPoint"]];
-        _visibility = dictionary[@"visibility"];
+        _visibility = [self visibilityFormatter: dictionary[@"visibility"]];
         _windBearing = dictionary[@"windBearing"];
         _humidity = [self humidityFormatter:dictionary[@"humidity"]];
         _summary = dictionary[@"summary"];
@@ -43,6 +43,10 @@
 
 -(NSString *)dewPointFormatter:(NSString *)dewPoint{
     return [[NSString alloc] initWithFormat:@"%.0f", [dewPoint doubleValue]];
+}
+
+-(NSString *)visibilityFormatter:(NSString *)visibility{
+    return [[NSString alloc] initWithFormat:@"%.0f", [visibility doubleValue]];
 }
 
 @end
