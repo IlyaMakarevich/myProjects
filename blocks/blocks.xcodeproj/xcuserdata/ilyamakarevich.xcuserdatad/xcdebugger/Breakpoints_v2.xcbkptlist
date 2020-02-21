@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "146CA988-C5FB-41A7-9B45-912C97B16373"
+            uuid = "7323237A-0C12-4535-B16A-882B65D052FF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "blocks/ViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-testBlocksMethod:"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-beginTaskWithName:completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
