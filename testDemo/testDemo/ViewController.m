@@ -8,29 +8,80 @@
 
 #import "ViewController.h"
 
+typedef void(^EmptyBlock)(NSString* str);
+typedef void (^CompletionBlock)(void);
+
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    KNVersionIntegerFromVersionStr(@"9.4.2");
+
+//1.
+   EmptyBlock emptyBlock;
+   emptyBlock = ^(NSString* stroka) {
+        NSLog(@"hoooorrrayy %@", stroka);
+    };
+
+    emptyBlock(@"dddd");
+
+//2.
+    [self methodWithBlock:^{
+        NSLog(@"second");
+    }];
+
+//3.
+    [self methodWithBlock2:^(BOOL smth) {
+        if (smth) {
+            NSLog(@"cucumber");
+        } else
+        {
+            NSLog(@"meat");
+        }
+    }];
+
+    [self methodWithBlockReturnString:^(NSString * surname) {
+        surname = @"Makarevich";
+    }];
+
+    //4.
+      [self performActionWithCompletion:^{
+        //method body execution first NSLog(@"Action Performed");
+       NSLog(@"Completion is called to intimate action is performed.");
+    }];
 }
 
-long KNVersionIntegerFromVersionStr (NSString * versionStr)
-{
-    if (!versionStr || [versionStr length]==0)
-        return 0;
-    versionStr = [[NSString alloc] initWithFormat:@"%@.0.0", versionStr];
-    const char *verUTF8 = [versionStr UTF8String];
-    int ver1,ver2,ver3;
-    sscanf(verUTF8, "%d.%d.%d", &ver1, &ver2, &ver3);
-    long versionInt = ver1*10000 + ver2*100 + ver3;
-    NSLog(@"%ld", versionInt);
-    return versionInt;
+
+
+- (void)methodWithBlock:(void (^)(void))textBlock {
+    NSLog(@"first");
+    textBlock();
+    NSLog(@"third");
 }
+
+- (void)methodWithBlock2:(void (^)(BOOL))block {
+    NSLog(@"Can I have the");
+    block(NO);
+    NSLog(@"burger");
+}
+
+- (NSString*)methodWithBlockReturnString:(void(^)(NSString*)) block {
+    NSString* name = @"Ilya";
+    block(@"makarevich");
+    return name;
+}
+
+- (void)performActionWithCompletion:(CompletionBlock)completionBlock {
+   NSLog(@"Action Performed");
+   completionBlock();
+}
+
 
 
 @end
